@@ -60,7 +60,7 @@ Route::get('/validate_ni_number/{ni_number}', function(Request $request, $ni_num
 
 // Convert raw salary to UNISON subscription band
 Route::get('/salary_to_band/{salary}', function(Request $request, $salary) {
-	return 'FINISHME'	
+	return 'FINISHME';
 });
 
 
