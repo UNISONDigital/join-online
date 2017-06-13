@@ -15,9 +15,12 @@ The goal is for it to serve a template for a future agency to take over the ongo
   - List potential workplaces based on email domain name and postcode 
   - Convert salary to UNISON subscription band 
   - Submit all final form details 
-- **TBC** Artisan command to update workplace and employer data from Salesforce
+- **TBC** Commands to:
+  - Update workplace and employer data from Salesforce
+  - Dump completed sign-ups to CSV
 
 ## Set up 
 1. Clone repo
-2. Create database called XXX and run `php artisan migrate:seed` 
-3. Something something
+2. Create database called XXX and update your `.env` with your log-in details
+3. Run `php artisan migrate:seed` 
+4. Something something
