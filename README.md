@@ -3,7 +3,7 @@ UNISON's new join online journey, designed to ultimately replace the existing jo
 
 This is a first pass on a basic functioning prototype, which will allow users to go through the form and have their details stored in the database at the end. It uses real workplace and employer data that UNISON holds to try and match applicants up to their workplace in a more systematised way than the existing system. 
 
-The goal is for it to serve a template for a future agency to take over the ongoing delivery and maintenance of
+The goal is for it to serve a template for a future agency to take over the ongoing delivery and maintenance of the final product. 
 
 ## Tech overview
 - Laravel 5.4 application
