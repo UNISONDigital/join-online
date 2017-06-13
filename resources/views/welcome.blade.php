@@ -79,15 +79,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Tom
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="">START</a>
+                    <a href="">DOING</a>
+                    <a href="">THINGS</a>
+                    <a href="">RIGHT</a>
+                    <a href="">HERE</a>
                 </div>
             </div>
         </div>
