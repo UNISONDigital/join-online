@@ -1,0 +1,26 @@
+$inputFocusColour: #66AFE9;
+
+.standard-form input {
+  appearance: none;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1em;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  padding: 10px 15px;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.standard-form input:focus {
+  border: 1px solid $inputFocusColour;
+}
+
+.standard-form label {
+  display: block;
+  font-size: 20px;
+}

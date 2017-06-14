@@ -1,0 +1,38 @@
+html, html a {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font: 16px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 48px; // Fixed header height
+  color: $grey;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.15em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site__container {
+  max-width: $siteWidth;
+  margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+  body {
+    margin-top: 0;
+  }
+}

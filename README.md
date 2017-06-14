@@ -21,6 +21,14 @@ The goal is for it to serve a template for a future agency to take over the ongo
 
 ## Set up 
 1. Clone repo
-2. Create database called XXX and update your `.env` with your log-in details
-3. Run `php artisan migrate:seed` 
-4. Something something
+2. `composer install`
+3. `php artisan key:generate`
+4. `php artisan migrate:seed`
+5. `php artisan serve`
+6. Visit `localhost:8000`
+
+## Assets (css/js)
+1. `npm install`
+2. `npm run dev` or `npm run watch`
+
+For further information - [https://laravel.com/docs/5.4/mix](https://laravel.com/docs/5.4/mix)

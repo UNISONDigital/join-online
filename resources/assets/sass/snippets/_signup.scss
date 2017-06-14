@@ -1,0 +1,87 @@
+$fieldsetPadding: 17px;
+
+.signup {
+  max-width: $siteWidth;
+  margin: 0 auto;
+  border-top: 15px solid $purple;
+  background: $green;
+  padding: ($padding / 2) ($padding - $fieldsetPadding);
+}
+
+.signup__message {
+  font-size: 54px;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.signup__form {
+  display: table;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.signup__fieldset {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 25%;
+  padding: 0 17px 20px 17px;
+}
+
+.signup__label {
+  color: #fff;
+  padding-bottom: 10px;
+}
+
+.signup__fieldset-submit {
+  margin-top: 20px;
+}
+
+input.signup__submit {
+  @include standard-button($purple, #fff);
+}
+
+// Contact number
+.signup__contact {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.signup__contact-phone {
+  font-size: 40px;
+  color: #fff;
+  line-height: 1.15em;
+}
+
+.signup__contact-number {
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .signup__fieldset {
+    width: 50%;
+    padding: 0 17px 20px 17px;
+  }
+}
+
+@media (max-width: 760px) {
+  .signup__fieldset {
+    display: block;
+    width: 100%;
+    padding: 0 0 20px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .signup {
+    padding: $paddingMobile;
+  }
+
+  .signup__message {
+    font-size: 34px;
+  }
+
+  .signup__contact-phone {
+    font-size: 24px;
+  }
+}
