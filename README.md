@@ -25,4 +25,4 @@ The goal is for it to serve a template for a future agency to take over the ongo
 3. Create a database and update your `.env` with your log-in details
 4. Run `CREATE EXTENSION postgis;` in your database 
 5. Run `php artisan migrate:refresh` 
-6. Run `php artisan db:seed` 
+6. Run `php artisan db:seed`. (Get a cup of tea, this will take a while.)
