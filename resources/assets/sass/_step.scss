@@ -81,16 +81,6 @@
   min-width: 230px;
 }
 
-.step__form-onward-options .step__form-fieldset {
-  display: block;
-  width: 100%;
-  max-width: 430px;
-}
-
-.step__form-submit {
-  @include standard-button($purple, #fff);
-}
-
 @media (max-width: 1080px) {
   .step__content {
     width: 55%;

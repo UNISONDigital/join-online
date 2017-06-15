@@ -53,22 +53,7 @@
             <input id="about-ni" name="ni" class="step__form-input" type="text" placeholder="AA 11 22 33 J">
           </fieldset>
         </div>
-        <div class="step__form-onward-options">
-          <fieldset class="step__form-fieldset">
-            <input class="step__form-submit" type="submit" value="Continue to 'Getting in touch'">
-          </fieldset>
-          <p class="step__form-onward-options--seperator">or</p>
-          <fieldset class="step__form-fieldset">
-            <input class="step__form-submit" type="submit" value="Finish your application later">
-          </fieldset>
-          <div class="step__form--explainer">
-            <p>We'll email you:</p>
-            <ul>
-              <li>A link to this form</li>
-              <li>Your membership number, which will also be your temporary password</li>
-            </ul>
-          </div>
-        </div>
+        @include('snippets.onward-options', ['continueToLabel' => 'Getting in touch'])
       </form>
     </div>
   </section>
