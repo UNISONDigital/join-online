@@ -23,11 +23,11 @@
         <div class="step__form--two-up">
           <fieldset class="step__form-fieldset">
             <label for="about-fname">First name</label>
-            <input id="about-fname" name="fname" class="step__form-input" type="text" placeholder="Enter first name">
+            <input id="about-fname" name="fname" class="step__form-input" type="text" placeholder="Enter first name" data-required>
           </fieldset>
           <fieldset class="step__form-fieldset">
             <label for="about-lname">Last name</label>
-            <input id="about-lname" name="lname" class="step__form-input" type="text" placeholder="Enter last name">
+            <input id="about-lname" name="lname" class="step__form-input" type="text" placeholder="Enter last name" data-required>
           </fieldset>
         </div>
         <div class="step__form--dob">
@@ -35,15 +35,15 @@
           <p class="step__form--explainer">For example: 20 / 8 / 1978</p>
           <fieldset class="step__form-fieldset">
             <label for="about-dob-dd">Day</label>
-            <input id="about-dob-dd" name="about-dob-dd" class="step__form-input" type="text" placeholder="20">
+            <input id="about-dob-dd" name="about-dob-dd" class="step__form-input" type="number" placeholder="20" step="1" min="1" max="31" data-required>
           </fieldset>
           <fieldset class="step__form-fieldset">
             <label for="about-dob-mm">Month</label>
-            <input id="about-dob-mm" name="about-dob-mm" class="step__form-input" type="text" placeholder="08">
+            <input id="about-dob-mm" name="about-dob-mm" class="step__form-input" type="number" placeholder="08" step="1" min="1" max="12" data-required>
           </fieldset>
           <fieldset class="step__form-fieldset">
             <label for="about-dob-yyyy">Year</label>
-            <input id="about-dob-yyyy" name="about-dob-yyyy" class="step__form-input" type="text" placeholder="1978">
+            <input id="about-dob-yyyy" name="about-dob-yyyy" class="step__form-input" type="number" placeholder="1978" data-required>
           </fieldset>
         </div>
         <div class="step__form--ni">

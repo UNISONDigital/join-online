@@ -72,11 +72,11 @@
 
 .step__form--dob .step__form-fieldset {
   display: inline-block;
-  width: 100px;
+  max-width: 100px;
   margin-right: 10px;
 }
 
-// Form - custom fieldset settings
+// Form - title input
 .step__form--title-input {
   min-width: 230px;
 }
@@ -96,5 +96,40 @@
 
   .step__form {
     padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .step__form-fieldset {
+    display: block;
+  }
+
+  .step__form--two-up .step__form-fieldset {
+    width: 100%;
+    display: block;
+  }
+
+  .step__form--two-up .step__form-fieldset:first-child {
+    padding-right: 0;
+  }
+
+  .step__form--two-up .step__form-fieldset:last-child {
+    padding-left: 0;
+  }
+
+  .step__form--dob {
+    padding-bottom: 20px;
+  }
+
+  .step__form--dob .step__form-fieldset {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    padding: 10px 0;
+  }
+
+  .step__form--title-input {
+    width: 100%;
+    min-width: none;
   }
 }
