@@ -89,6 +89,12 @@
 
 @media (max-width: 960px) {
   .step__content {
+    float: none;
     width: 100%;
+    padding: 0 $paddingMobile;
+  }
+
+  .step__form {
+    padding-bottom: 40px;
   }
 }

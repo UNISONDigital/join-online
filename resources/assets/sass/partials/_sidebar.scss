@@ -65,11 +65,22 @@ $sidebarContentMaxWidth: 430px;
   .sidebar {
     width: 45%;
   }
+
+  .sidebar__membership-card {
+    margin: 0;
+  }
+
+  .sidebar__step-indicator {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 960px) {
   .sidebar {
     position: static;
+    top: 0;
     width: 100%;
+    padding: 0 $paddingMobile;
   }
 }
