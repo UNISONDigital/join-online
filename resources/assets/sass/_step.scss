@@ -32,7 +32,7 @@
 }
 
 .step__form-fieldset {
-  display: inline-block;
+  display: block;
   padding: 25px 0;
 }
 
@@ -43,6 +43,18 @@
 
 .step__form--explainer {
   color: #818A91;
+}
+
+.step__form-toggle {
+  display: inline-block;
+  color: $purple;
+  margin-top: -10px;
+}
+
+.step__form-footnote {
+  display: inline-block;
+  color: #818A91;
+  padding-top: 5px;
 }
 
 // Form - two up
@@ -78,8 +90,82 @@
 
 // Form - title input
 .step__form--title-input {
+  display: inline-block;
   min-width: 230px;
 }
+
+// Form - address container
+.step__form-address {
+  padding-bottom: 20px;
+}
+
+// Form - address input - auto
+.js-address-auto {}
+
+.js-address-auto .step__form-fieldset {
+  position: relative;
+}
+
+.js-address-auto--hidden {
+  display: none;
+}
+
+.js-address-auto-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 170px;
+  overflow: scroll;
+  z-index: $zIndexAddressResults;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transform: translateY(-23px);
+}
+
+.js-address-auto-results--active {
+  display: block;
+}
+
+.js-address-result-listing {
+
+}
+
+.js-address-result-listing-item {
+  cursor: pointer;
+}
+
+.js-address-result-listing-item:hover {
+  background: #eee;
+}
+
+.step__form-loading-container {
+  position: relative;
+}
+
+.standard-loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  margin-top: -13px;
+}
+
+.standard-loader--active {
+  display: block;
+}
+
+// Form - address input - manual
+.js-address-manual {
+  display: none;
+}
+
+.js-address-manual--active {
+  display: block;
+}
+
 
 @media (max-width: 1080px) {
   .step__content {

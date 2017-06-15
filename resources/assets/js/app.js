@@ -1,16 +1,4 @@
 require('./bootstrap');
+require('./global');
 require('./snippets/informationBlock');
-
-var UNISON = UNISON = {};
-
-UNISON.Global = {
-  init: () => {
-    UNISON.Global.setupSelect();
-  },
-
-  setupSelect: () => {
-    $('.js-selectric').selectric();
-  }
-}
-
-UNISON.Global.init();
+require('./join-step-two');

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10332,20 +10332,8 @@ return jQuery;
 
 __webpack_require__(3);
 __webpack_require__(4);
-
-var UNISON = UNISON = {};
-
-UNISON.Global = {
-  init: function init() {
-    UNISON.Global.setupSelect();
-  },
-
-  setupSelect: function setupSelect() {
-    $('.js-selectric').selectric();
-  }
-};
-
-UNISON.Global.init();
+__webpack_require__(5);
+__webpack_require__(11);
 
 /***/ }),
 /* 2 */
@@ -10362,10 +10350,28 @@ try {
   window.$ = window.jQuery = __webpack_require__(0);
 } catch (e) {}
 // Selectric (custom select box)
-__webpack_require__(5);
+__webpack_require__(6);
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON = {};
+
+UNISON.Global = {
+  init: function init() {
+    this.setupSelect();
+  },
+
+  setupSelect: function setupSelect() {
+    $('.js-selectric').selectric();
+  }
+};
+
+UNISON.Global.init();
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 var _this = this;
@@ -10397,7 +10403,7 @@ UNISON.informationBlock = {
 UNISON.informationBlock.init();
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11505,12 +11511,129 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
 module.exports = __webpack_require__(2);
 
+
+/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON || {};
+
+UNISON.StepTwo = {
+  SELECTOR: null,
+  addressInputState: 'auto',
+  loadedAddresses: true,
+
+  init: function init() {
+    this.SELECTOR = $('.step__form-address');
+    this.createListeners();
+  },
+
+  showLoader: function showLoader() {
+    this.SELECTOR.find('.standard-loader').addClass('standard-loader--active');
+  },
+
+  hideLoader: function hideLoader() {
+    this.SELECTOR.find('.standard-loader').removeClass('standard-loader--active');
+  },
+
+  onAddressAutoInput: function onAddressAutoInput(e) {
+    if (!this.loadedAddresses) {
+      var input = $(e.currentTarget);
+      var url = input.data('url');
+      this.showLoader();
+      $.ajax({
+        url: url,
+        success: function success() {
+          UNISON.StepTwo.addressLoadComplete();
+        },
+        error: function error() {
+          UNISON.StepTwo.addressLoadError();
+        }
+      });
+    }
+  },
+
+  addressLoadComplete: function addressLoadComplete() {
+    this.loadedAddresses = true;
+    this.hideLoader();
+    this.showAddressResults();
+  },
+
+  addressLoadError: function addressLoadError() {
+    this.hideLoader();
+    this.showLoadError();
+  },
+
+  showAddressResults: function showAddressResults() {
+    this.SELECTOR.find('.js-address-auto-results').addClass('js-address-auto-results--active');
+  },
+
+  onAddressManualTriggerClicked: function onAddressManualTriggerClicked(e) {
+    e.preventDefault();
+    this.toggleAddressInputState();
+  },
+
+  toggleAddressInputState: function toggleAddressInputState() {
+    if (this.addressInputState === 'auto') {
+      this.hideAutoForm();
+      this.showManualForm();
+      this.addressInputState = 'manual';
+      this.updateTrigger();
+    } else {
+      this.showAutoForm();
+      this.hideManualForm();
+      this.addressInputState = 'auto';
+      this.updateTrigger();
+    }
+  },
+
+  showManualForm: function showManualForm() {
+    this.SELECTOR.find('.js-address-manual').addClass('js-address-manual--active');
+  },
+
+  hideManualForm: function hideManualForm() {
+    this.SELECTOR.find('.js-address-manual').removeClass('js-address-manual--active');
+  },
+
+  showAutoForm: function showAutoForm() {
+    this.SELECTOR.find('.js-address-auto').removeClass('js-address-auto--hidden');
+  },
+
+  hideAutoForm: function hideAutoForm() {
+    this.SELECTOR.find('.js-address-auto').addClass('js-address-auto--hidden');
+  },
+
+  updateTrigger: function updateTrigger() {
+    var trigger = this.SELECTOR.find('.js-address-toggle');
+    var html = '';
+    if (this.addressInputState === 'auto') {
+      html = trigger.data('manual-message');
+    } else {
+      html = trigger.data('auto-message');
+    }
+    trigger.html(html);
+  },
+
+  createListeners: function createListeners() {
+    this.SELECTOR.find('.js-address-auto-input').on('input', function (e) {
+      UNISON.StepTwo.onAddressAutoInput(e);
+    });
+    this.SELECTOR.find('.js-address-toggle').on('click', function (e) {
+      UNISON.StepTwo.onAddressManualTriggerClicked(e);
+    });
+  }
+};
+
+UNISON.StepTwo.init();
 
 /***/ })
 /******/ ]);
