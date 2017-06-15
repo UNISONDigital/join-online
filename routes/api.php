@@ -120,11 +120,11 @@ Route::get('/salary_to_band/{salary}', function(Request $request, $salary) {
 Route::get('/employers/search', function(Request $request) {
 	
 	$search_type = $request->input('type');
-	$name = $request->input('name');
+	$q = $request->input('q');
 
 	if ($search_type == 'name') {
 
-		$result = Employer::where('name', 'ILIKE', "%$name%")
+		$result = Employer::where('name', 'ILIKE', "%$q%")
 							->select('name', 'service_group', 'rms_id')
 							->take(10)
 							->get()
