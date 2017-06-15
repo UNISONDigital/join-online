@@ -11,7 +11,7 @@
       </li>
       <li class="sidebar__step {{ $activeStepId === 2 ? "sidebar__step--active" : "" }}">
         <span class="sidebar__step-disc"><span class="sidebar__step-number">2</span></span>
-        <span class="sidebar__step-label">Your contact details</span>
+        <span class="sidebar__step-label">Getting in touch</span>
       </li>
       <li class="sidebar__step {{ $activeStepId === 3 ? "sidebar__step--active" : "" }}">
         <span class="sidebar__step-disc"><span class="sidebar__step-number">3</span></span>

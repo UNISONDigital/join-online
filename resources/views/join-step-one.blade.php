@@ -11,8 +11,8 @@
       <p><strong>We won't share that you've joined UNISON with your employer.</strong></p>
       <form class="step__form standard-form">
         <fieldset class="step__form-fieldset step__form--title-input">
-          <label>Title</label>
-          <select class="js-selectric" data-required>
+          <label for="about-title">Title</label>
+          <select id="about-title" class="js-selectric" data-required>
             <option>Please select...</option>
             <option value="about-mr">Mr</option>
             <option value="about-mrs">Mrs</option>
