@@ -5,10 +5,13 @@
 
 @import 'common/standard-form';
 @import 'common/standard-button';
+@import 'common/standard-select';
 
 @import 'partials/header';
-@import 'introduction';
+@import 'partials/sidebar';
 @import 'snippets/membership-card';
 @import 'snippets/image-block';
 @import 'snippets/signup';
+@import 'introduction';
 @import 'information-points';
+@import 'step';

@@ -5,14 +5,13 @@ $copyPadding: 30px;
 
 .membership-card {
   position: relative;
-  width: 430px;
+  width: 100%;
   text-align: left;
   background: #fff;
   border: 1px solid #979797;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
   padding-left: $visualWidth;
-  overflow: hidden;
 }
 
 // Coloured visual
@@ -31,6 +30,7 @@ $copyPadding: 30px;
   left: 0;
   height: calc(50% - #{$visualRowGapHalf});
   background: $purple;
+  border-top-left-radius: 15px;
 }
 
 .membership-card__visual--bottom {
@@ -39,8 +39,8 @@ $copyPadding: 30px;
   bottom: 0;
   right: 0;
   left: 0;
-  height: 50%;
   background: $green;
+  border-bottom-left-radius: 15px;
 }
 
 // Copy area

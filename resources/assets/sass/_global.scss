@@ -21,12 +21,17 @@ h1, h2, h3, h4, h5 {
   line-height: 1.15em;
 }
 
+strong {
+  font-weight: bold;
+}
+
 img {
   display: block;
   max-width: 100%;
 }
 
 .site__container {
+  position: relative;
   max-width: $siteWidth;
   margin: 0 auto;
 }
