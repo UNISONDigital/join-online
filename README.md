@@ -14,17 +14,20 @@ The goal is for it to serve a template for a future agency to take over the ongo
   - List potential employers based on email domain name
   - List potential workplaces based on email domain name and postcode 
   - Convert salary to UNISON subscription band 
-  - Submit all final form details 
+  - Submit all final form details
 - **TBC** Commands to:
   - Update workplace and employer data from Salesforce
   - Dump completed sign-ups to CSV
 
 ## Set up 
 1. Clone repo
-2. `composer install`
-3. `php artisan key:generate`
-4. `php artisan migrate:seed`
-5. `php artisan serve`
+2. Run `composer install`
+3. Create a database and update your `.env` with your log-in details
+4. Run `CREATE EXTENSION postgis;` in your database
+5. Run `php artisan key:generate`
+5. Run `php artisan migrate:refresh` 
+6. Run `php artisan db:seed`. (Get a cup of tea, this will take a while.)
+5. Run `php artisan serve`
 6. Visit `localhost:8000`
 
 ## Assets (css/js)
