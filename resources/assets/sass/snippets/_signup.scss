@@ -36,8 +36,9 @@ $fieldsetPadding: 17px;
   margin-top: 20px;
 }
 
-input.signup__submit {
+input[type="submit"].signup__submit {
   @include standard-button($purple, #fff);
+  padding: 12px 0;
 }
 
 .signup__note {

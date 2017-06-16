@@ -3,7 +3,8 @@
 .standard-form input[type="email"],
 .standard-form input[type="number"],
 .standard-form input[type="submit"],
-.standard-form textarea {
+.standard-form textarea,
+.standard-form button {
   appearance: none;
   display: block;
   width: 100%;
@@ -19,7 +20,12 @@
   transition: border-color 200ms ease;
 }
 
-.standard-form input:focus {
+.standard-form input[type="text"]:focus,
+.standard-form input[type="password"]:focus,
+.standard-form input[type="email"]:focus,
+.standard-form input[type="number"]:focus,
+.standard-form input[type="submit"]:focus,
+.standard-form textarea:focus {
   border: 1px solid $inputFocusBorderColour;
 }
 
@@ -48,7 +54,7 @@ label.alt-radio__label {
   display: table;
   width: 100%;
   padding: 0 14px 2px;
-  border: 1px solid #979797;
+  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -187,14 +193,13 @@ label.currency-input__label {
   position: relative;
   display: inline-block;
   border-radius: 5px;
-  border: 1px solid #ccc;
   overflow: hidden;
 }
 
 .currency-input__before,
 .currency-input__after {
   position: absolute;
-  top: 0;
+  top: 1px;
   font-size: 20px;
   line-height: 1em;
   background: #fff;
@@ -205,21 +210,37 @@ label.currency-input__label {
 }
 
 .currency-input__before {
-  left: 0;
+  left: 1px;
   border-right: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 input[type="number"].currency-input__input {
-  border-radius: 0;
-  border: 0;
   padding-right: 80px;
   padding-left: 60px;
-  text-align: right;
 }
 
 .currency-input__after {
-  right: 0;
+  right: 1px;
   border-left: 1px solid #ccc;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.currency-display {
+  display: none;
+  max-width: 590px;
+  padding: 20px 0;
+}
+
+.currency-display__notice {
+  font-size: 40px;
+  line-height: 1.5em;
+}
+
+.currency-display--active {
+  display: block;
 }
 
 @media (max-width: 960px) {

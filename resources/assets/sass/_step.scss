@@ -100,6 +100,21 @@
   margin-right: 15px;
 }
 
+.step__form--second-job-extra {
+  display: none;
+}
+
+.step__form--second-job-extra--active {
+  display: block;
+}
+
+button.step__form--second-job-lookup {
+  @include standard-button($green, #fff);
+  display: inline-block;
+  margin-top: 20px;
+  max-width: 290px;
+}
+
 // Form - address container
 .step__form-address {
   padding-bottom: 20px;

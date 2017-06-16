@@ -7,11 +7,11 @@
           <span>Step 3 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form">
+      <form class="step__form standard-form js-step-three">
         <fieldset class="step__form-fieldset">
           <label>Matches we've found for your workplace:</label>
           <div class="alt-radio" tabindex="0">
-            <input id="work-workplace-1" name="work-workplace" class="step__form-input alt-radio__input" type="radio" checked>
+            <input id="work-workplace-1" name="work-workplace" class="step__form-input alt-radio__input" type="radio" value="Value 1" checked>
             <label for="work-workplace-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -20,7 +20,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-workplace-2" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-workplace-2" name="work-workplace" class="step__form-input alt-radio__input" type="radio" value="Value 2">
             <label for="work-workplace-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -29,7 +29,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-workplace-3" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-workplace-3" name="work-workplace" class="step__form-input alt-radio__input" type="radio" value="Value 3">
             <label for="work-workplace-3" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -44,7 +44,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-workplace-4" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-workplace-4" name="work-workplace" class="step__form-input alt-radio__input" type="radio" value="Value 4">
             <label for="work-workplace-4" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -56,7 +56,7 @@
         <fieldset class="step__form-fieldset">
           <label>Select your employer:</label>
           <div class="alt-radio" tabindex="0">
-            <input id="work-employer-1" name="work-employer" class="step__form-input alt-radio__input" type="radio" checked>
+            <input id="work-employer-1" name="work-employer" class="step__form-input alt-radio__input" type="radio" value="Employer 1" checked>
             <label for="work-employer-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -65,7 +65,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-employer-2" name="work-employer" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-employer-2" name="work-employer" class="step__form-input alt-radio__input" type="radio" value="Employer 2">
             <label for="work-employer-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -74,7 +74,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-employer-3" name="work-employer" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-employer-3" name="work-employer" class="step__form-input alt-radio__input" type="radio" value="Employer 3">
             <label for="work-employer-3" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -87,7 +87,7 @@
           <label for="work-job-title">Your job title</label>
           <input id="work-job-title" name="work-job-title" class="step__form-input" type="text" placeholder="Job title" data-required>
         </fieldset>
-        <fieldset class="step__form-fieldset currency-input">
+        <fieldset class="step__form-fieldset currency-input js-currency-input">
           <label for="work-salary" class="currency-input__label">What are you paid (before tax and deductions)?</label>
           <p class="step__form-footnote">If the amount varies use an average.</p>
           <div class="currency-input__wrap">
@@ -100,7 +100,7 @@
           <p class="step__form-footnote">Every:</p>
           <div class="alt-radio-tabbed__container">
             <div class="alt-radio-tabbed" tabindex="0">
-              <input id="work-salary-frequency-1" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
+              <input id="work-salary-frequency-1" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="hour">
               <label for="work-salary-frequency-1" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
                   <p>Hour</p>
@@ -108,7 +108,7 @@
               </label>
             </div>
             <div class="alt-radio-tabbed" tabindex="0">
-              <input id="work-salary-frequency-2" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
+              <input id="work-salary-frequency-2" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="week">
               <label for="work-salary-frequency-2" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
                   <p>Week</p>
@@ -116,7 +116,7 @@
               </label>
             </div>
             <div class="alt-radio-tabbed" tabindex="0">
-              <input id="work-salary-frequency-3" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
+              <input id="work-salary-frequency-3" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="month">
               <label for="work-salary-frequency-3" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
                   <p>Month</p>
@@ -124,7 +124,7 @@
               </label>
             </div>
             <div class="alt-radio-tabbed" tabindex="0">
-              <input id="work-salary-frequency-4" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
+              <input id="work-salary-frequency-4" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="year">
               <label for="work-salary-frequency-4" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
                   <p>Year</p>
@@ -132,11 +132,14 @@
               </label>
             </div>
           </div>
+          <div class="currency-display">
+            <p class="currency-display__notice">Your UNISON subscription will be &pound;<span class="js-subscription-calculation"></span> per month.</p>
+          </div>
         </fieldset>
         <fieldset class="step__form-fieldset step__form--second-job">
           <label>Do you have another job?</label>
           <div class="alt-radio" tabindex="0">
-            <input id="work-second-job-1" name="work-second-job" class="step__form-input alt-radio__input" type="radio" checked>
+            <input id="work-second-job-1" name="work-second-job" class="step__form-input alt-radio__input" type="radio" value="true">
             <label for="work-second-job-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -145,7 +148,7 @@
             </label>
           </div>
           <div class="alt-radio" tabindex="0">
-            <input id="work-second-job-2" name="work-second-job" class="step__form-input alt-radio__input" type="radio">
+            <input id="work-second-job-2" name="work-second-job" class="step__form-input alt-radio__input" type="radio" value="false" checked>
             <label for="work-second-job-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
               <div class="alt-radio__copy">
@@ -154,9 +157,14 @@
             </label>
           </div>
         </fieldset>
+        <fieldset class="step__form-fieldset step__form--second-job-extra">
+          <label for="work-secondary-job-name">I also work at:</label>
+          <input id="work-secondary-job-name" name="work-secondary-job-name" class="step__form-input" type="text" placeholder="Secondary job">
+          <button class="step__form--second-job-lookup">Look it up</button>
+        </fieldset>
         @include('snippets.onward-options', ['continueToLabel' => 'Payment'])
       </form>
     </div>
   </section>
-  @include('partials.sidebar', ['activeStepId' => 2])
+  @include('partials.sidebar', ['activeStepId' => 3])
 @include('partials.footer')
