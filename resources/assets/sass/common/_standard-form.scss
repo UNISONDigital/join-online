@@ -1,4 +1,9 @@
-.standard-form input {
+.standard-form input[type="text"],
+.standard-form input[type="password"],
+.standard-form input[type="email"],
+.standard-form input[type="number"],
+.standard-form input[type="submit"],
+.standard-form textarea {
   appearance: none;
   display: block;
   width: 100%;
@@ -22,4 +27,186 @@
   display: block;
   font-size: 20px;
   padding-bottom: 10px;
+}
+
+// =======================
+// Radio button
+// =======================
+.alt-radio {
+  padding: 5px 0;
+}
+
+.alt-radio__input {
+  display: none;
+}
+
+label.alt-radio__label {
+  display: table;
+  width: 100%;
+  padding: 0 14px 2px;
+  border: 1px solid #979797;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alt-radio__input:checked + .alt-radio__label {
+  background: $green;
+}
+
+.alt-radio__radio {
+  display: table-cell;
+  vertical-align: top;
+  width: 20px;
+  padding: 10px 0;
+}
+
+.alt-radio__radio-disc {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.alt-radio__radio-disc:after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #4A4A4A;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__radio-disc:after {
+  display: block;
+}
+
+.alt-radio__copy {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__copy {
+  color: #fff;
+}
+
+.alt-radio__copy p {
+  padding: 8px 0;
+}
+
+.alt-radio__copy ul {
+  padding: 8px 0;
+  list-style: disc;
+  margin-left: 1em;
+}
+
+// =======================
+// Radio button - tabbed
+// =======================
+.alt-radio-tabbed__container {
+  display: table;
+  width: 100%;
+  max-width: 390px;
+  border-spacing: 1px;
+  border-collapse: separate;
+}
+
+.alt-radio-tabbed {
+  display: table-cell;
+}
+
+label.alt-radio-tabbed__label {
+  background: $green;
+  color: #fff;
+  padding: 9px 5px;
+  line-height: 1.5em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.alt-radio-tabbed__input:checked + .alt-radio-tabbed__label {
+  background: darken($green, 10%);
+}
+
+.alt-radio-tabbed:first-child .alt-radio-tabbed__label {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.alt-radio-tabbed:last-child .alt-radio-tabbed__label {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.alt-radio-tabbed__input {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .alt-radio-tabbed__container {
+    max-width: none;
+  }
+}
+
+// =======================
+// Currency input
+// =======================
+label.currency-input__label {
+  padding-bottom: 0;
+}
+
+.currency-input__wrap {
+  display: block;
+}
+
+.currency-input__inner {
+  position: relative;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.currency-input__before,
+.currency-input__after {
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+  line-height: 1em;
+  background: #fff;
+  margin: 0;
+  padding: 12px 15px;
+  background: #ECEEEF;
+  color: #999999;
+}
+
+.currency-input__before {
+  left: 0;
+  border-right: 1px solid #ccc;
+}
+
+input[type="number"].currency-input__input {
+  border-radius: 0;
+  border: 0;
+  padding-right: 80px;
+  padding-left: 60px;
+  text-align: right;
+}
+
+.currency-input__after {
+  right: 0;
+  border-left: 1px solid #ccc;
+}
+
+@media (max-width: 960px) {
+  .currency-input__inner {
+    display: block;
+  }
 }

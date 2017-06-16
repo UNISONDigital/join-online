@@ -54,7 +54,7 @@
 .step__form-footnote {
   display: inline-block;
   color: #818A91;
-  padding-top: 5px;
+  padding: 5px 0;
 }
 
 // Form - two up
@@ -92,6 +92,12 @@
 .step__form--title-input {
   display: inline-block;
   min-width: 230px;
+}
+
+// Form - second job
+.step__form--second-job .alt-radio {
+  display: inline-block;
+  margin-right: 15px;
 }
 
 // Form - address container
@@ -217,5 +223,10 @@
   .step__form--title-input {
     width: 100%;
     min-width: none;
+  }
+
+  .step__form--second-job .alt-radio {
+    display: block;
+    margin-right: 0;
   }
 }

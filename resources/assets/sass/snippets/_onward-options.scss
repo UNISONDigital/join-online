@@ -7,13 +7,13 @@
   width: 100%;
 }
 
-input.onward-options__submit {
+input[type="submit"].onward-options__submit {
   @include standard-button($purple, #fff);
   padding: 20px 0 23px;
   font-weight: bold;
 }
 
-input.onward-options__save {
+input[type="submit"].onward-options__save {
   @include standard-button($greyLight, #fff);
   padding: 20px 0 23px;
   font-weight: bold;
@@ -31,4 +31,10 @@ input.onward-options__save {
 
 .onward-options__list-item {
   padding-bottom: 10px;
+}
+
+@media (max-width: 960px) {
+  .onward-options {
+    max-width: none;
+  }
 }
