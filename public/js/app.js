@@ -10361,10 +10361,24 @@ var UNISON = UNISON = {};
 UNISON.Global = {
   init: function init() {
     this.setupSelect();
+    this.createListeners();
   },
 
   setupSelect: function setupSelect() {
     $('.js-selectric').selectric();
+  },
+
+  onAltRadioKeyup: function onAltRadioKeyup(e) {
+    if (e.keyCode === 13) {
+      var el = $(e.currentTarget);
+      el.find('input').trigger('click');
+    }
+  },
+
+  createListeners: function createListeners() {
+    $('.alt-radio, .alt-radio-tabbed').on('keypress', function (e) {
+      UNISON.Global.onAltRadioKeyup(e);
+    });
   }
 };
 

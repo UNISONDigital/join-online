@@ -10,7 +10,7 @@
       <form class="step__form standard-form">
         <fieldset class="step__form-fieldset">
           <label>Matches we've found for your workplace:</label>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-workplace-1" name="work-workplace" class="step__form-input alt-radio__input" type="radio" checked>
             <label for="work-workplace-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -19,7 +19,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-workplace-2" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
             <label for="work-workplace-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -28,7 +28,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-workplace-3" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
             <label for="work-workplace-3" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -43,7 +43,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-workplace-4" name="work-workplace" class="step__form-input alt-radio__input" type="radio">
             <label for="work-workplace-4" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -55,7 +55,7 @@
         </fieldset>
         <fieldset class="step__form-fieldset">
           <label>Select your employer:</label>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-employer-1" name="work-employer" class="step__form-input alt-radio__input" type="radio" checked>
             <label for="work-employer-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -64,7 +64,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-employer-2" name="work-employer" class="step__form-input alt-radio__input" type="radio">
             <label for="work-employer-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -73,7 +73,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-employer-3" name="work-employer" class="step__form-input alt-radio__input" type="radio">
             <label for="work-employer-3" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -99,7 +99,7 @@
           </div>
           <p class="step__form-footnote">Every:</p>
           <div class="alt-radio-tabbed__container">
-            <div class="alt-radio-tabbed">
+            <div class="alt-radio-tabbed" tabindex="0">
               <input id="work-salary-frequency-1" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
               <label for="work-salary-frequency-1" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
@@ -107,7 +107,7 @@
                 </div>
               </label>
             </div>
-            <div class="alt-radio-tabbed">
+            <div class="alt-radio-tabbed" tabindex="0">
               <input id="work-salary-frequency-2" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
               <label for="work-salary-frequency-2" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
@@ -115,7 +115,7 @@
                 </div>
               </label>
             </div>
-            <div class="alt-radio-tabbed">
+            <div class="alt-radio-tabbed" tabindex="0">
               <input id="work-salary-frequency-3" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
               <label for="work-salary-frequency-3" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
@@ -123,7 +123,7 @@
                 </div>
               </label>
             </div>
-            <div class="alt-radio-tabbed">
+            <div class="alt-radio-tabbed" tabindex="0">
               <input id="work-salary-frequency-4" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio">
               <label for="work-salary-frequency-4" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
@@ -135,7 +135,7 @@
         </fieldset>
         <fieldset class="step__form-fieldset step__form--second-job">
           <label>Do you have another job?</label>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-second-job-1" name="work-second-job" class="step__form-input alt-radio__input" type="radio" checked>
             <label for="work-second-job-1" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
@@ -144,7 +144,7 @@
               </div>
             </label>
           </div>
-          <div class="alt-radio">
+          <div class="alt-radio" tabindex="0">
             <input id="work-second-job-2" name="work-second-job" class="step__form-input alt-radio__input" type="radio">
             <label for="work-second-job-2" class="alt-radio__label">
               <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>

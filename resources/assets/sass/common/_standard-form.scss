@@ -36,6 +36,10 @@
   padding: 5px 0;
 }
 
+.alt-radio:focus {
+  outline: none;
+}
+
 .alt-radio__input {
   display: none;
 }
@@ -47,6 +51,10 @@ label.alt-radio__label {
   border: 1px solid #979797;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.alt-radio:focus > label.alt-radio__label {
+  border-color: $inputFocusBorderColour;
 }
 
 .alt-radio__input:checked + .alt-radio__label {
@@ -122,6 +130,10 @@ label.alt-radio__label {
   display: table-cell;
 }
 
+.alt-radio-tabbed:focus {
+  outline: none;
+}
+
 label.alt-radio-tabbed__label {
   background: $green;
   color: #fff;
@@ -129,6 +141,11 @@ label.alt-radio-tabbed__label {
   line-height: 1.5em;
   cursor: pointer;
   text-align: center;
+  border: 1px solid $green;
+}
+
+.alt-radio-tabbed:focus .alt-radio-tabbed__label {
+  border: 1px solid $inputFocusBorderColour;
 }
 
 .alt-radio-tabbed__input:checked + .alt-radio-tabbed__label {
