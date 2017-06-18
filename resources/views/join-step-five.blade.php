@@ -3,7 +3,9 @@
     <div class="step__content">
       <div class="step__header">
         <h1 class="step__header-title">Your card is on its way</h1>
-        <div class="step__header-arrow"></div>
+        <div class="step__header-arrow">
+          <div class="step__header-arrow-head"></div>
+        </div>
         <div class="step__counter">
           <span>Step 5 of 5</span>
         </div>

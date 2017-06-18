@@ -14,11 +14,32 @@
 
 // Header
 .step__header {
+  position: relative;
   padding-bottom: 30px;
 }
 
 .step__header-title {
   font-size: 40px;
+}
+
+.step__header-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 100px;
+  background: $green;
+}
+
+.step__header-arrow-head {
+  position: absolute;
+  top: -15px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 60px solid $green;
 }
 
 .step__counter {
@@ -234,6 +255,13 @@ button.step__form--second-job-lookup {
   display: block;
 }
 
+@media (max-width: 1240px) {
+  .step__header-arrow {
+    position: relative;
+    margin: 40px 0;
+  }
+}
+
 @media (max-width: 1080px) {
   .step__content {
     width: 55%;
@@ -249,6 +277,10 @@ button.step__form--second-job-lookup {
 
   .step__form {
     padding-bottom: 40px;
+  }
+
+  .step__header-arrow {
+    display: none;
   }
 }
 
