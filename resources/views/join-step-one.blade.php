@@ -53,7 +53,7 @@
             <input id="about-ni" name="ni" class="step__form-input" type="text" placeholder="AA 11 22 33 J">
           </fieldset>
         </div>
-        @include('snippets.onward-options', ['continueToLabel' => 'Getting in touch'])
+        @include('snippets.onward-options', ['continueToLabel' => 'Getting in touch', 'finalStage' => false])
       </form>
     </div>
   </section>

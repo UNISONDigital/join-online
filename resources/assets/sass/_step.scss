@@ -57,6 +57,26 @@
   padding: 5px 0;
 }
 
+.step__form-link a {
+  color: $purple;
+}
+
+.step__form-title {
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+.step__form-paragraph {
+  padding: 20px 0;
+}
+
+// Form - selections (step five)
+.step__form-selections-title {
+  font-size: 30px;
+  line-height: 1.25em;
+  padding-top: 60px;
+}
+
 // Form - two up
 .step__form--two-up {
   display: table;
@@ -121,8 +141,6 @@ button.step__form--second-job-lookup {
 }
 
 // Form - address input - auto
-.js-address-auto {}
-
 .js-address-auto .step__form-fieldset {
   position: relative;
 }
@@ -187,6 +205,34 @@ button.step__form--second-job-lookup {
   display: block;
 }
 
+// Form - payment toggle
+.step__form--payment-toggle .alt-radio {
+  display: block;
+}
+
+// Form - payment - by salary
+.payment__salary--hidden {
+  display: none;
+}
+
+.payment__option-title {
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+.payment__option-paragraph {
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+// Form - payment - by direct debit
+.payment__direct-debit {
+  display: none;
+}
+
+.payment__direct-debit--active {
+  display: block;
+}
 
 @media (max-width: 1080px) {
   .step__content {
@@ -243,5 +289,10 @@ button.step__form--second-job-lookup {
   .step__form--second-job .alt-radio {
     display: block;
     margin-right: 0;
+  }
+
+  button.step__form--second-job-lookup {
+    display: block;
+    max-width: none;
   }
 }

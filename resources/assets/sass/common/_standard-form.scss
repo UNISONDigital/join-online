@@ -42,6 +42,30 @@
   padding: 5px 0;
 }
 
+.alt-radio-inline {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.alt-radio-inline .alt-radio {
+  display: table-cell;
+  vertical-align: top;
+  width: 33%;
+  height: 100%;
+  padding-right: 10px;
+}
+
+.alt-radio-inline .alt-radio:last-child {
+  padding-right: 0;
+}
+
+.alt-radio-inline .alt-radio__label {
+  background: #ECEEEF;
+  height: 100%;
+  padding: 0 10px 2px;
+}
+
 .alt-radio:focus {
   outline: none;
 }
@@ -119,6 +143,32 @@ label.alt-radio__label {
   padding: 8px 0;
   list-style: disc;
   margin-left: 1em;
+}
+
+.alt-radio__copy a {
+  padding: 8px 0;
+  display: inline-block;
+  color: $purple;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__copy a {
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .alt-radio-inline {
+    display: block;
+  }
+
+  .alt-radio-inline .alt-radio {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .alt-radio-inline .alt-radio__label {
+    padding: 0 14px 2px;
+  }
 }
 
 // =======================

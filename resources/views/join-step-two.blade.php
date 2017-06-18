@@ -81,7 +81,7 @@
           <input id="details-work-email" name="details-work-email" class="step__form-input" type="text" placeholder="Enter email" autocomplete="street-address" data-required>
           <span class="step__form-footnote">You can choose your contact preferences when your application is complete</span>
         </fieldset>
-        @include('snippets.onward-options', ['continueToLabel' => 'Your work'])
+        @include('snippets.onward-options', ['continueToLabel' => 'Your work', 'finalStage' => false])
       </form>
     </div>
   </section>

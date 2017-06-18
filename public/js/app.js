@@ -10335,6 +10335,7 @@ __webpack_require__(4);
 __webpack_require__(6);
 __webpack_require__(5);
 __webpack_require__(12);
+__webpack_require__(13);
 
 /***/ }),
 /* 2 */
@@ -11746,9 +11747,8 @@ UNISON.StepThree = {
     }
   },
 
-  onSecondaryJobInput: function onSecondaryJobInput(e) {
+  onSecondaryJobInputChange: function onSecondaryJobInputChange(e) {
     var secondaryJob = $(e.currentTarget).val();
-    console.log(secondaryJob);
     if (secondaryJob === 'true') {
       this.showSecondaryJobForm();
     } else {
@@ -11764,7 +11764,74 @@ UNISON.StepThree = {
       UNISON.StepThree.onCurrencyInput(e);
     });
     this.SELECTOR.find('.step__form--second-job input').on('change', function (e) {
-      UNISON.StepThree.onSecondaryJobInput(e);
+      UNISON.StepThree.onSecondaryJobInputChange(e);
+    });
+  }
+};
+
+UNISON.StepThree.init();
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON || {};
+
+UNISON.StepThree = {
+  SELECTOR: null,
+
+  init: function init() {
+    this.SELECTOR = $('.js-step-four');
+    this.createListeners();
+  },
+
+  // ======================================
+  // Payment related
+  // ======================================
+  showSalaryForm: function showSalaryForm() {
+    var form = this.SELECTOR.find('.payment__salary');
+    form.removeClass('payment__salary--hidden');
+    form.find('.step__form-input').attr('data-required', true);
+  },
+
+  hideSalaryForm: function hideSalaryForm() {
+    var form = this.SELECTOR.find('.payment__salary');
+    form.addClass('payment__salary--hidden');
+    form.find('.step__form-input').attr('data-required', false);
+  },
+
+  showDirectDebitForm: function showDirectDebitForm() {
+    var form = this.SELECTOR.find('.payment__direct-debit');
+    form.addClass('payment__direct-debit--active');
+    form.find('.step__form-input').attr('data-required', true);
+  },
+
+  hideDirectDebitForm: function hideDirectDebitForm() {
+    var form = this.SELECTOR.find('.payment__direct-debit');
+    form.removeClass('payment__direct-debit--active');
+    form.find('.step__form-input').attr('data-required', false);
+  },
+
+  // ======================================
+  // Event listener related
+  // ======================================
+  onPaymentInputChange: function onPaymentInputChange(e) {
+    var paymentType = $(e.currentTarget).val();
+    if (paymentType === 'salary') {
+      this.showSalaryForm();
+      this.hideDirectDebitForm();
+    } else {
+      this.hideSalaryForm();
+      this.showDirectDebitForm();
+    }
+  },
+
+  // ======================================
+  // Create all event listeners
+  // ======================================
+  createListeners: function createListeners() {
+    this.SELECTOR.find('.step__form--payment-toggle input').on('change', function (e) {
+      UNISON.StepThree.onPaymentInputChange(e);
     });
   }
 };

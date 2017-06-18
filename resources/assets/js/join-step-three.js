@@ -97,9 +97,8 @@ UNISON.StepThree = {
     }
   },
 
-  onSecondaryJobInput: function(e) {
+  onSecondaryJobInputChange: function(e) {
     var secondaryJob = $(e.currentTarget).val();
-    console.log(secondaryJob);
     if (secondaryJob === 'true') {
       this.showSecondaryJobForm();
     } else {
@@ -112,7 +111,7 @@ UNISON.StepThree = {
   // ======================================
   createListeners: function() {
     this.SELECTOR.find('.currency-input__input').on('input', function(e) { UNISON.StepThree.onCurrencyInput(e); });
-    this.SELECTOR.find('.step__form--second-job input').on('change', function(e) { UNISON.StepThree.onSecondaryJobInput(e); });
+    this.SELECTOR.find('.step__form--second-job input').on('change', function(e) { UNISON.StepThree.onSecondaryJobInputChange(e); });
   }
 };
 

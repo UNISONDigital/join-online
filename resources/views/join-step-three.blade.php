@@ -162,7 +162,7 @@
           <input id="work-secondary-job-name" name="work-secondary-job-name" class="step__form-input" type="text" placeholder="Secondary job">
           <button class="step__form--second-job-lookup">Look it up</button>
         </fieldset>
-        @include('snippets.onward-options', ['continueToLabel' => 'Payment'])
+        @include('snippets.onward-options', ['continueToLabel' => 'Payment', 'finalStage' => false])
       </form>
     </div>
   </section>
