@@ -10381,9 +10381,6 @@ UNISON.StandardForm = function (selector) {
   // Set up select boxes to be custom ones
   // =======================================
   function setupDropdowns() {
-    // var select = $('.js-selectric');
-    // var i = 0;
-    // for ()
     $('.js-selectric').selectric();
   }
 
@@ -10468,6 +10465,28 @@ UNISON.StandardForm = function (selector) {
   }
 
   // =======================================
+  // Validate National Insurance number
+  // http://www.braemoor.co.uk/software/nino.shtml
+  // =======================================
+  function validateNI(value) {
+    var exp1 = /^[A-CEGHJ-NOPR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]{1}/i;
+    var exp2 = /(^GB)|(^BG)|(^NK)|(^KN)|(^TN)|(^NT)|(^ZZ).+/i;
+    if (value.match(exp1) && !value.match(exp2)) {
+      return value.toUpperCase();
+    } else {
+      return false;
+    }
+  }
+
+  // =======================================
+  // Validate email address
+  // =======================================
+  function validateEmail(val) {
+    var re = /([@.])\w+/g;
+    return re.test(val);
+  }
+
+  // =======================================
   // Show error
   // =======================================
   function showError(el, isSelect) {
@@ -10500,27 +10519,6 @@ UNISON.StandardForm = function (selector) {
   }
 
   // =======================================
-  // Validate National Insurance number
-  // =======================================
-  function validateNI(value) {
-    var exp1 = /^[A-CEGHJ-NOPR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]{1}/i;
-    var exp2 = /(^GB)|(^BG)|(^NK)|(^KN)|(^TN)|(^NT)|(^ZZ).+/i;
-    if (value.match(exp1) && !value.match(exp2)) {
-      return value.toUpperCase();
-    } else {
-      return false;
-    }
-  }
-
-  // =======================================
-  // Validate email address
-  // =======================================
-  function validateEmail(val) {
-    var re = /([@.])\w+/g;
-    return re.test(val);
-  }
-
-  // =======================================
   // On form submit, validate
   // =======================================
   function onFormSubmit(e) {
@@ -10542,13 +10540,18 @@ UNISON.StandardForm = function (selector) {
     $.ajax({ url: url });
   }
 
-  // Scroll to error
+  // =======================================
+  // Helper - scroll to error
+  // =======================================
   function scrollToError() {
     var el = SELECTOR.find('.step__form-input--error').first();
     var top = el.offset().top - $('.global-header').outerHeight() - 60;
     $('html, body').animate({ scrollTop: top });
   }
 
+  // =======================================
+  // Listener related
+  // =======================================
   function onInputClicked(e) {
     var el = $(e.currentTarget);
     hideError(el, false);
