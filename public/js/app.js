@@ -10445,7 +10445,6 @@ UNISON.StandardForm = function (selector) {
         matches.push(formElement.value);
       }
       if (formElement.hasAttribute('data-ni')) {
-        console.log(formElement.value.length);
         if (!validateNI(formElement.value) && formElement.value.length !== 9) {
           showError(formElement);
           valid = false;
@@ -10527,12 +10526,20 @@ UNISON.StandardForm = function (selector) {
   function onFormSubmit(e) {
     e.preventDefault();
     var valid = validate();
-    console.log(valid);
     if (valid) {
       submitForm();
     } else {
       scrollToError();
     }
+  }
+
+  // =======================================
+  // Submit form like normal once everything is
+  // filled in and validated
+  // =======================================
+  function submitForm() {
+    var url = SELECTOR.attr('action');
+    $.ajax({ url: url });
   }
 
   // Scroll to error
