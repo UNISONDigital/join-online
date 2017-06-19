@@ -7,7 +7,7 @@
           <span>Step 4 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-four">
+      <form class="step__form standard-form js-step-four" data-module="StandardForm">
         <fieldset class="step__form-fieldset step__form--payment-toggle">
           <label>Please take my UNISON subscription:</label>
           <div class="alt-radio" tabindex="0">
@@ -35,7 +35,7 @@
           <p class="payment__option-paragraph">UNISON and your employer have an agreement that allows you to pay your subscription directly through your wages.</p>
           <fieldset class="step__form-fieldset">
             <label for="payment-salary-name">Enter your name below to signify your consent to your subscription being paid in this way:</label>
-            <input id="payment-salary-name" name="payment-salary-name" class="step__form-input" type="text" placeholder="Enter your name">
+            <input id="payment-salary-name" name="payment-salary-name" class="step__form-input" type="text" placeholder="Enter your name" data-required>
           </fieldset>
           <div class="step__form--dob">
             <p class="step__form--explainer-title">Date of birth</p>
@@ -71,7 +71,8 @@
           </fieldset>
           <fieldset class="step__form-fieldset step__form--title-input">
             <label for="payment-dd-payment-date">Day of month to take payment:</label>
-            <select id="payment-dd-payment-date" class="js-selectric" data-required>
+            <select id="payment-dd-payment-date" class="js-selectric" data-required data-select>
+              <option value="null">Please select...</option>
               <option value="1">1st</option>
               <option value="2">2nd</option>
               <option value="3">3rd</option>

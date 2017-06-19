@@ -70,19 +70,27 @@ UNISON.StepTwo = {
   },
 
   showManualForm: function() {
-    this.SELECTOR.find('.js-address-manual').addClass('js-address-manual--active');
+    var manualForm = this.SELECTOR.find('.js-address-manual');
+    manualForm.addClass('js-address-manual--active');
+    manualForm.find('input').attr('data-required', true);
   },
 
   hideManualForm: function() {
-    this.SELECTOR.find('.js-address-manual').removeClass('js-address-manual--active');
+    var manualForm = this.SELECTOR.find('.js-address-manual');
+    manualForm.removeClass('js-address-manual--active');
+    manualForm.find('input').removeAttr('data-required');
   },
 
   showAutoForm: function() {
-    this.SELECTOR.find('.js-address-auto').removeClass('js-address-auto--hidden');
+    var autoForm = this.SELECTOR.find('.js-address-auto');
+    autoForm.removeClass('js-address-auto--hidden');
+    autoForm.find('input').attr('data-required', true);
   },
 
   hideAutoForm: function() {
-    this.SELECTOR.find('.js-address-auto').addClass('js-address-auto--hidden');
+    var autoForm = this.SELECTOR.find('.js-address-auto');
+    autoForm.addClass('js-address-auto--hidden');
+    autoForm.find('input').removeAttr('data-required');
   },
 
   updateTrigger: function() {

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10330,12 +10330,13 @@ return jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(3);
 __webpack_require__(4);
-__webpack_require__(6);
+// require('./a1-standardForm'); This is loaded inside global, because of compile order problems
 __webpack_require__(5);
-__webpack_require__(12);
-__webpack_require__(13);
+__webpack_require__(9);
+__webpack_require__(8);
+__webpack_require__(7);
+__webpack_require__(6);
 
 /***/ }),
 /* 2 */
@@ -10344,7 +10345,8 @@ __webpack_require__(13);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 3 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Jquery
@@ -10352,42 +10354,428 @@ try {
   window.$ = window.jQuery = __webpack_require__(0);
 } catch (e) {}
 // Selectric (custom select box)
-__webpack_require__(7);
+__webpack_require__(10);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var UNISON = UNISON = {};
 
-UNISON.Global = {
-  init: function init() {
-    this.setupSelect();
-    this.createListeners();
-  },
+// A litte helper for form stuff up here
+// (had issues seperating this out into a 
+// new file because of require I imagine.
+// Doing it here instead.)
+UNISON.StandardForm = function (selector) {
 
-  setupSelect: function setupSelect() {
+  var SELECTOR = selector;
+  var dropdowns = [];
+  var matches = [];
+
+  function init() {
+    setupDropdowns();
+    createListeners();
+  }
+
+  // =======================================
+  // Set up select boxes to be custom ones
+  // =======================================
+  function setupDropdowns() {
+    // var select = $('.js-selectric');
+    // var i = 0;
+    // for ()
     $('.js-selectric').selectric();
-  },
+  }
 
-  onAltRadioKeyup: function onAltRadioKeyup(e) {
+  // =======================================
+  // Mimic a click on a radio button when 
+  // tabbed to and enter is clicked on
+  // the keyboard
+  // =======================================
+  function onAltRadioKeyup(e) {
     if (e.keyCode === 13) {
       var el = $(e.currentTarget);
       el.find('input').trigger('click');
     }
+  }
+
+  // =======================================
+  // Validate form
+  // =======================================
+  function validate() {
+    requiredFields = SELECTOR.find('[data-required]');
+    var i = 0,
+        length = requiredFields.length,
+        valid = true,
+        type,
+        formElement,
+        matches = [];
+    for (; i < length; i++) {
+      formElement = requiredFields[i];
+      type = formElement.type;
+      // Check if any fields are empty
+      if (type === 'text' || type === 'textarea' || type === 'password' || type === 'number') {
+        if (formElement.value === '') {
+          showError(formElement);
+          valid = false;
+        } else {
+          hideError(formElement);
+        }
+        // Check if email is valid
+      }
+      if (formElement.hasAttribute('data-email')) {
+        if (!validateEmail(formElement.value)) {
+          showError(formElement);
+          valid = false;
+        } else {
+          hideError(formElement);
+        }
+      }
+      // Check if a dropdown item has been selected
+      if (formElement.hasAttribute('data-select')) {
+        if (formElement.value === 'null' || formElement.value === '') {
+          showError(formElement, true);
+          valid = false;
+        } else {
+          hideError(formElement, true);
+        }
+      }
+      if (formElement.hasAttribute('data-match')) {
+        // Push all values we want to match into an array
+        matches.push(formElement.value);
+      }
+      if (formElement.hasAttribute('data-ni')) {
+        console.log(formElement.value.length);
+        if (!validateNI(formElement.value) && formElement.value.length !== 9) {
+          showError(formElement);
+          valid = false;
+        } else {
+          hideError(formElement);
+        }
+      }
+    }
+    // After the loop, compare the array items you would like to match
+    var k = 0,
+        length = matches.length;
+    for (; k < length; k++) {
+      if (matches[k] !== matches[0] || matches[k] === '') {
+        showError(SELECTOR.find('[data-match]'));
+        valid = false;
+      } else {
+        hideError(SELECTOR.find('[data-match]'));
+      }
+    }
+    return valid;
+  }
+
+  // =======================================
+  // Show error
+  // =======================================
+  function showError(el, isSelect) {
+    var selector = null;
+    // We are using a custom select box lib so we
+    // have to do a bit of searching around for it
+    // before we add an error class to it
+    if (isSelect) {
+      selector = $(el).closest('.selectric-js-selectric').find('.selectric');
+    } else {
+      selector = $(el);
+    }
+    selector.addClass('step__form-input--error');
+  }
+
+  // =======================================
+  // Hide error
+  // =======================================
+  function hideError(el, isSelect) {
+    var selector = null;
+    // We are using a custom select box lib so we
+    // have to do a bit of searching around for it
+    // before we add an error class to it
+    if (isSelect) {
+      selector = $(el).closest('.selectric-js-selectric').find('.selectric');
+    } else {
+      selector = $(el);
+    }
+    selector.removeClass('step__form-input--error');
+  }
+
+  // =======================================
+  // Validate National Insurance number
+  // =======================================
+  function validateNI(value) {
+    var exp1 = /^[A-CEGHJ-NOPR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]{1}/i;
+    var exp2 = /(^GB)|(^BG)|(^NK)|(^KN)|(^TN)|(^NT)|(^ZZ).+/i;
+    if (value.match(exp1) && !value.match(exp2)) {
+      return value.toUpperCase();
+    } else {
+      return false;
+    }
+  }
+
+  // =======================================
+  // Validate email address
+  // =======================================
+  function validateEmail(val) {
+    var re = /([@.])\w+/g;
+    return re.test(val);
+  }
+
+  // =======================================
+  // On form submit, validate
+  // =======================================
+  function onFormSubmit(e) {
+    e.preventDefault();
+    var valid = validate();
+    console.log(valid);
+    if (valid) {
+      submitForm();
+    } else {
+      scrollToError();
+    }
+  }
+
+  // Scroll to error
+  function scrollToError() {
+    var el = SELECTOR.find('.step__form-input--error').first();
+    var top = el.offset().top - $('.global-header').outerHeight() - 60;
+    $('html, body').animate({ scrollTop: top });
+  }
+
+  function onInputClicked(e) {
+    var el = $(e.currentTarget);
+    hideError(el, false);
+  }
+
+  function onSelectricClicked(e) {
+    var el = $(e.currentTarget);
+    hideError(el, false);
+  }
+
+  // =======================================
+  // Create listeners
+  // =======================================
+  function createListeners() {
+    SELECTOR.find('.alt-radio, .alt-radio-tabbed').on('keypress', function (e) {
+      onAltRadioKeyup(e);
+    });
+    SELECTOR.on('submit', function (e) {
+      onFormSubmit(e);
+    });
+    SELECTOR.find('input').on('click', function (e) {
+      onInputClicked(e);
+    });
+    SELECTOR.find('.selectric').on('click', function (e) {
+      onSelectricClicked(e);
+    });
+  }
+
+  init();
+};
+
+// Start global
+UNISON.Global = {
+  init: function init() {
+    this.setupForm();
   },
 
-  createListeners: function createListeners() {
-    $('.alt-radio, .alt-radio-tabbed').on('keypress', function (e) {
-      UNISON.Global.onAltRadioKeyup(e);
-    });
+  setupForm: function setupForm() {
+    var el = $('[data-module="StandardForm"]');
+    var form = new UNISON.StandardForm(el);
   }
 };
 
 UNISON.Global.init();
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON || {};
+
+UNISON.StepThree = {
+  SELECTOR: null,
+
+  init: function init() {
+    this.SELECTOR = $('.js-step-four');
+    this.createListeners();
+  },
+
+  // ======================================
+  // Payment related
+  // ======================================
+  showSalaryForm: function showSalaryForm() {
+    var form = this.SELECTOR.find('.payment__salary');
+    form.removeClass('payment__salary--hidden');
+    form.find('.step__form-input').attr('data-required', true);
+  },
+
+  hideSalaryForm: function hideSalaryForm() {
+    var form = this.SELECTOR.find('.payment__salary');
+    form.addClass('payment__salary--hidden');
+    form.find('.step__form-input').removeAttr('data-required');
+  },
+
+  showDirectDebitForm: function showDirectDebitForm() {
+    var form = this.SELECTOR.find('.payment__direct-debit');
+    form.addClass('payment__direct-debit--active');
+    form.find('.step__form-input').attr('data-required', true);
+  },
+
+  hideDirectDebitForm: function hideDirectDebitForm() {
+    var form = this.SELECTOR.find('.payment__direct-debit');
+    form.removeClass('payment__direct-debit--active');
+    form.find('.step__form-input').removeAttr('data-required');
+  },
+
+  // ======================================
+  // Event listener related
+  // ======================================
+  onPaymentInputChange: function onPaymentInputChange(e) {
+    var paymentType = $(e.currentTarget).val();
+    if (paymentType === 'salary') {
+      this.showSalaryForm();
+      this.hideDirectDebitForm();
+    } else {
+      this.hideSalaryForm();
+      this.showDirectDebitForm();
+    }
+  },
+
+  // ======================================
+  // Create all event listeners
+  // ======================================
+  createListeners: function createListeners() {
+    this.SELECTOR.find('.step__form--payment-toggle input').on('change', function (e) {
+      UNISON.StepThree.onPaymentInputChange(e);
+    });
+  }
+};
+
+UNISON.StepThree.init();
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON || {};
+
+UNISON.StepThree = {
+  SELECTOR: null,
+  salaryRanges: [{
+    'start': 0,
+    'end': 9999,
+    'cost': 2
+  }, {
+    'start': 10000,
+    'end': 19999,
+    'cost': 5
+  }, {
+    'start': 20000,
+    'end': 29999,
+    'cost': 10
+  }, {
+    'start': 30000,
+    'end': 39999,
+    'cost': 15
+  }, {
+    'start': 40000,
+    'end': 49999,
+    'cost': 20
+  }, {
+    'start': 50000,
+    'end': 999999999999999999999999,
+    'cost': 40
+  }],
+
+  init: function init() {
+    this.SELECTOR = $('.js-step-three');
+    this.createListeners();
+  },
+
+  // ======================================
+  // Currency input related
+  // ======================================
+  updateSubscriptionCalculation: function updateSubscriptionCalculation(cost) {
+    this.SELECTOR.find('.js-subscription-calculation').html(cost + '.00');
+  },
+
+  showCalculation: function showCalculation() {
+    this.SELECTOR.find('.currency-display').addClass('currency-display--active');
+  },
+
+  hideCalculation: function hideCalculation() {
+    this.SELECTOR.find('.currency-display').removeClass('currency-display--active');
+  },
+
+  checkCost: function checkCost(value) {
+    var i = 0;
+    for (; i < this.salaryRanges.length; i++) {
+      var start = this.salaryRanges[i].start;
+      var end = this.salaryRanges[i].end;
+      var cost = this.salaryRanges[i].cost;
+      if (value >= start && value <= end) {
+        return cost;
+      }
+    }
+  },
+
+  // ======================================
+  // Secondary job related
+  // ======================================
+  showSecondaryJobForm: function showSecondaryJobForm() {
+    var extra = this.SELECTOR.find('.step__form--second-job-extra');
+    extra.addClass('step__form--second-job-extra--active');
+    extra.find('.step__form-input').attr('data-required', true);
+  },
+
+  hideSecondaryJobForm: function hideSecondaryJobForm() {
+    var extra = this.SELECTOR.find('.step__form--second-job-extra');
+    extra.removeClass('step__form--second-job-extra--active');
+    extra.find('.step__form-input').removeAttr('data-required');
+  },
+
+  // ======================================
+  // Event listener related
+  // ======================================
+  onCurrencyInput: function onCurrencyInput(e) {
+    var input = $(e.currentTarget);
+    var value = input.val();
+    if (value.length && value >= 0) {
+      var cost = this.checkCost(value);
+      this.showCalculation();
+      this.updateSubscriptionCalculation(cost);
+    } else {
+      this.hideCalculation();
+    }
+  },
+
+  onSecondaryJobInputChange: function onSecondaryJobInputChange(e) {
+    var secondaryJob = $(e.currentTarget).val();
+    if (secondaryJob === 'true') {
+      this.showSecondaryJobForm();
+    } else {
+      this.hideSecondaryJobForm();
+    }
+  },
+
+  // ======================================
+  // Create all event listeners
+  // ======================================
+  createListeners: function createListeners() {
+    this.SELECTOR.find('.currency-input__input').on('input', function (e) {
+      UNISON.StepThree.onCurrencyInput(e);
+    });
+    this.SELECTOR.find('.step__form--second-job input').on('change', function (e) {
+      UNISON.StepThree.onSecondaryJobInputChange(e);
+    });
+  }
+};
+
+UNISON.StepThree.init();
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 var UNISON = UNISON || {};
@@ -10462,19 +10850,27 @@ UNISON.StepTwo = {
   },
 
   showManualForm: function showManualForm() {
-    this.SELECTOR.find('.js-address-manual').addClass('js-address-manual--active');
+    var manualForm = this.SELECTOR.find('.js-address-manual');
+    manualForm.addClass('js-address-manual--active');
+    manualForm.find('input').attr('data-required', true);
   },
 
   hideManualForm: function hideManualForm() {
-    this.SELECTOR.find('.js-address-manual').removeClass('js-address-manual--active');
+    var manualForm = this.SELECTOR.find('.js-address-manual');
+    manualForm.removeClass('js-address-manual--active');
+    manualForm.find('input').removeAttr('data-required');
   },
 
   showAutoForm: function showAutoForm() {
-    this.SELECTOR.find('.js-address-auto').removeClass('js-address-auto--hidden');
+    var autoForm = this.SELECTOR.find('.js-address-auto');
+    autoForm.removeClass('js-address-auto--hidden');
+    autoForm.find('input').attr('data-required', true);
   },
 
   hideAutoForm: function hideAutoForm() {
-    this.SELECTOR.find('.js-address-auto').addClass('js-address-auto--hidden');
+    var autoForm = this.SELECTOR.find('.js-address-auto');
+    autoForm.addClass('js-address-auto--hidden');
+    autoForm.find('input').removeAttr('data-required');
   },
 
   updateTrigger: function updateTrigger() {
@@ -10501,7 +10897,7 @@ UNISON.StepTwo = {
 UNISON.StepTwo.init();
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ (function(module, exports) {
 
 var _this = this;
@@ -10533,7 +10929,7 @@ UNISON.informationBlock = {
 UNISON.informationBlock.init();
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11641,202 +12037,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
 module.exports = __webpack_require__(2);
 
-
-/***/ }),
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
-/***/ (function(module, exports) {
-
-var UNISON = UNISON || {};
-
-UNISON.StepThree = {
-  SELECTOR: null,
-  salaryRanges: [{
-    'start': 0,
-    'end': 9999,
-    'cost': 2
-  }, {
-    'start': 10000,
-    'end': 19999,
-    'cost': 5
-  }, {
-    'start': 20000,
-    'end': 29999,
-    'cost': 10
-  }, {
-    'start': 30000,
-    'end': 39999,
-    'cost': 15
-  }, {
-    'start': 40000,
-    'end': 49999,
-    'cost': 20
-  }, {
-    'start': 50000,
-    'end': 999999999999999999999999,
-    'cost': 40
-  }],
-
-  init: function init() {
-    this.SELECTOR = $('.js-step-three');
-    this.createListeners();
-  },
-
-  // ======================================
-  // Currency input related
-  // ======================================
-  updateSubscriptionCalculation: function updateSubscriptionCalculation(cost) {
-    this.SELECTOR.find('.js-subscription-calculation').html(cost + '.00');
-  },
-
-  showCalculation: function showCalculation() {
-    this.SELECTOR.find('.currency-display').addClass('currency-display--active');
-  },
-
-  hideCalculation: function hideCalculation() {
-    this.SELECTOR.find('.currency-display').removeClass('currency-display--active');
-  },
-
-  checkCost: function checkCost(value) {
-    var i = 0;
-    for (; i < this.salaryRanges.length; i++) {
-      var start = this.salaryRanges[i].start;
-      var end = this.salaryRanges[i].end;
-      var cost = this.salaryRanges[i].cost;
-      if (value >= start && value <= end) {
-        return cost;
-      }
-    }
-  },
-
-  // ======================================
-  // Secondary job related
-  // ======================================
-  showSecondaryJobForm: function showSecondaryJobForm() {
-    var extra = this.SELECTOR.find('.step__form--second-job-extra');
-    extra.addClass('step__form--second-job-extra--active');
-    extra.find('.step__form-input').attr('data-required', true);
-  },
-
-  hideSecondaryJobForm: function hideSecondaryJobForm() {
-    var extra = this.SELECTOR.find('.step__form--second-job-extra');
-    extra.removeClass('step__form--second-job-extra--active');
-    extra.find('.step__form-input').attr('data-required', false);
-  },
-
-  // ======================================
-  // Event listener related
-  // ======================================
-  onCurrencyInput: function onCurrencyInput(e) {
-    var input = $(e.currentTarget);
-    var value = input.val();
-    if (value.length && value >= 0) {
-      var cost = this.checkCost(value);
-      this.showCalculation();
-      this.updateSubscriptionCalculation(cost);
-    } else {
-      this.hideCalculation();
-    }
-  },
-
-  onSecondaryJobInputChange: function onSecondaryJobInputChange(e) {
-    var secondaryJob = $(e.currentTarget).val();
-    if (secondaryJob === 'true') {
-      this.showSecondaryJobForm();
-    } else {
-      this.hideSecondaryJobForm();
-    }
-  },
-
-  // ======================================
-  // Create all event listeners
-  // ======================================
-  createListeners: function createListeners() {
-    this.SELECTOR.find('.currency-input__input').on('input', function (e) {
-      UNISON.StepThree.onCurrencyInput(e);
-    });
-    this.SELECTOR.find('.step__form--second-job input').on('change', function (e) {
-      UNISON.StepThree.onSecondaryJobInputChange(e);
-    });
-  }
-};
-
-UNISON.StepThree.init();
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-var UNISON = UNISON || {};
-
-UNISON.StepThree = {
-  SELECTOR: null,
-
-  init: function init() {
-    this.SELECTOR = $('.js-step-four');
-    this.createListeners();
-  },
-
-  // ======================================
-  // Payment related
-  // ======================================
-  showSalaryForm: function showSalaryForm() {
-    var form = this.SELECTOR.find('.payment__salary');
-    form.removeClass('payment__salary--hidden');
-    form.find('.step__form-input').attr('data-required', true);
-  },
-
-  hideSalaryForm: function hideSalaryForm() {
-    var form = this.SELECTOR.find('.payment__salary');
-    form.addClass('payment__salary--hidden');
-    form.find('.step__form-input').attr('data-required', false);
-  },
-
-  showDirectDebitForm: function showDirectDebitForm() {
-    var form = this.SELECTOR.find('.payment__direct-debit');
-    form.addClass('payment__direct-debit--active');
-    form.find('.step__form-input').attr('data-required', true);
-  },
-
-  hideDirectDebitForm: function hideDirectDebitForm() {
-    var form = this.SELECTOR.find('.payment__direct-debit');
-    form.removeClass('payment__direct-debit--active');
-    form.find('.step__form-input').attr('data-required', false);
-  },
-
-  // ======================================
-  // Event listener related
-  // ======================================
-  onPaymentInputChange: function onPaymentInputChange(e) {
-    var paymentType = $(e.currentTarget).val();
-    if (paymentType === 'salary') {
-      this.showSalaryForm();
-      this.hideDirectDebitForm();
-    } else {
-      this.hideSalaryForm();
-      this.showDirectDebitForm();
-    }
-  },
-
-  // ======================================
-  // Create all event listeners
-  // ======================================
-  createListeners: function createListeners() {
-    this.SELECTOR.find('.step__form--payment-toggle input').on('change', function (e) {
-      UNISON.StepThree.onPaymentInputChange(e);
-    });
-  }
-};
-
-UNISON.StepThree.init();
 
 /***/ })
 /******/ ]);

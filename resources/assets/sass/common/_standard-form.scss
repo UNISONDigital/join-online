@@ -1,9 +1,8 @@
-.standard-form input[type="text"],
-.standard-form input[type="password"],
-.standard-form input[type="email"],
-.standard-form input[type="number"],
+.standard-form .step__form-input[type="text"],
+.standard-form .step__form-input[type="password"],
+.standard-form .step__form-input[type="email"],
+.standard-form .step__form-input[type="number"],
 .standard-form input[type="submit"],
-.standard-form textarea,
 .standard-form button {
   appearance: none;
   display: block;
@@ -20,12 +19,11 @@
   transition: border-color 200ms ease;
 }
 
-.standard-form input[type="text"]:focus,
-.standard-form input[type="password"]:focus,
-.standard-form input[type="email"]:focus,
-.standard-form input[type="number"]:focus,
-.standard-form input[type="submit"]:focus,
-.standard-form textarea:focus {
+.standard-form .step__form-input[type="text"]:focus,
+.standard-form .step__form-input[type="password"]:focus,
+.standard-form .step__form-input[type="email"]:focus,
+.standard-form .step__form-input[type="number"]:focus,
+.standard-form .step__form-input[type="submit"]:focus {
   border: 1px solid $inputFocusBorderColour;
 }
 
@@ -33,6 +31,14 @@
   display: block;
   font-size: 20px;
   padding-bottom: 10px;
+}
+
+.standard-form .step__form-input--error[type="text"],
+.standard-form .step__form-input--error[type="password"],
+.standard-form .step__form-input--error[type="email"],
+.standard-form .step__form-input--error[type="number"],
+.standard-form .step__form-input--error {
+  border-color: #D9534F;
 }
 
 // =======================
@@ -266,7 +272,7 @@ label.currency-input__label {
   border-bottom-left-radius: 5px;
 }
 
-input[type="number"].currency-input__input {
+.step__form-input[type="number"].currency-input__input {
   padding-right: 80px;
   padding-left: 60px;
 }

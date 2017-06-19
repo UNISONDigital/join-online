@@ -7,7 +7,7 @@
           <span>Step 3 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-three">
+      <form class="step__form standard-form js-step-three" data-module="StandardForm">
         <fieldset class="step__form-fieldset">
           <label>Matches we've found for your workplace:</label>
           <div class="alt-radio" tabindex="0">
@@ -100,7 +100,7 @@
           <p class="step__form-footnote">Every:</p>
           <div class="alt-radio-tabbed__container">
             <div class="alt-radio-tabbed" tabindex="0">
-              <input id="work-salary-frequency-1" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="hour">
+              <input id="work-salary-frequency-1" name="work-salary-frequency" class="step__form-input alt-radio-tabbed__input" type="radio" value="hour" checked>
               <label for="work-salary-frequency-1" class="alt-radio-tabbed__label">
                 <div class="alt-radio-tabbed__copy">
                   <p>Hour</p>

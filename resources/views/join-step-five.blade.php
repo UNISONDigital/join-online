@@ -13,7 +13,7 @@
       <p class="step__form-title">You are now one of 1.25 million UNISON members. We are stronger together.</p>
       <p class="step__form-paragraph">Your application is being processed. Once this is done you will receive your membership pack through the post (this may take up to two weeks).</p>
       <p class="step__form-paragraph"><strong>You will also receive an email containing more information about your membership shortly.</strong></p>
-      <form class="step__form standard-form js-step-five">
+      <form class="step__form standard-form js-step-five" data-module="StandardForm">
         <div class="step__form-selections">
           <p class="step__form-selections-title">1. My communications choice</p>
           <fieldset class="step__form-fieldset">

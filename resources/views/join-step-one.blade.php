@@ -9,11 +9,11 @@
       </div>
       <p>We need some personal information to get your membership started.</p>
       <p><strong>We won't share that you've joined UNISON with your employer.</strong></p>
-      <form class="step__form standard-form">
+      <form class="step__form standard-form" data-module="StandardForm">
         <fieldset class="step__form-fieldset step__form--title-input">
           <label for="about-title">Title</label>
-          <select id="about-title" class="js-selectric" data-required>
-            <option>Please select...</option>
+          <select id="about-title" class="js-selectric" data-required data-select>
+            <option value="null">Please select...</option>
             <option value="about-mr">Mr</option>
             <option value="about-mrs">Mrs</option>
             <option value="about-miss">Miss</option>
@@ -50,7 +50,7 @@
           <p class="step__form--explainer-title">National insurance number (optional)</p>
           <p class="step__form--explainer">Found on your National Insurance card, a payslip or P60 form. We use this to check if you’ve previously been a member of Unison.</p>
           <fieldset class="step__form-fieldset">
-            <input id="about-ni" name="ni" class="step__form-input" type="text" placeholder="AA 11 22 33 J">
+            <input id="about-ni" name="ni" class="step__form-input" type="text" placeholder="AA112233J" data-required data-ni>
           </fieldset>
         </div>
         @include('snippets.onward-options', ['continueToLabel' => 'Getting in touch', 'finalStage' => false])

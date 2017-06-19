@@ -79,7 +79,7 @@ UNISON.StepThree = {
   hideSecondaryJobForm: function() {
     var extra = this.SELECTOR.find('.step__form--second-job-extra')
     extra.removeClass('step__form--second-job-extra--active');
-    extra.find('.step__form-input').attr('data-required', false);
+    extra.find('.step__form-input').removeAttr('data-required');
   },
 
   // ======================================

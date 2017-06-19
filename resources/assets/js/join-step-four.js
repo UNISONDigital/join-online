@@ -20,7 +20,7 @@ UNISON.StepThree = {
   hideSalaryForm: function() {
     var form = this.SELECTOR.find('.payment__salary')
     form.addClass('payment__salary--hidden');
-    form.find('.step__form-input').attr('data-required', false);
+    form.find('.step__form-input').removeAttr('data-required');
   },
 
   showDirectDebitForm: function() {
@@ -32,7 +32,7 @@ UNISON.StepThree = {
   hideDirectDebitForm: function() {
     var form = this.SELECTOR.find('.payment__direct-debit')
     form.removeClass('payment__direct-debit--active');
-    form.find('.step__form-input').attr('data-required', false);
+    form.find('.step__form-input').removeAttr('data-required');
   },
 
   // ======================================
