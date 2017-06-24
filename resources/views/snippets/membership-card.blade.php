@@ -8,7 +8,9 @@
       <span>UNISON Member</span>
     </div>
     <div class="membership-card__name js-membership-card-name">
-      <span>Your name...</span>
+      <span class="js-membership-card-fullname">
+        <span class="js-membership-card-fname">Your</span> <span class="js-membership-card-lname">name...</span>
+      </span>
     </div>
     <div class="membership-card__helpline">
       <span>Helpline 0800 0 857 857</span>

@@ -23,11 +23,11 @@
         <div class="step__form--two-up">
           <fieldset class="step__form-fieldset">
             <label for="about-fname">First name</label>
-            <input id="about-fname" name="fname" class="step__form-input" type="text" placeholder="Enter first name" data-required>
+            <input id="about-fname" name="fname" class="step__form-input js-membership-card-input-fname" type="text" placeholder="Enter first name" data-required>
           </fieldset>
           <fieldset class="step__form-fieldset">
             <label for="about-lname">Last name</label>
-            <input id="about-lname" name="lname" class="step__form-input" type="text" placeholder="Enter last name" data-required>
+            <input id="about-lname" name="lname" class="step__form-input js-membership-card-input-lname" type="text" placeholder="Enter last name" data-required>
           </fieldset>
         </div>
         <div class="step__form--dob">

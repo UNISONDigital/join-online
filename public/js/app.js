@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10334,6 +10334,7 @@ __webpack_require__(3);
 // require('./a1-standardForm'); This is loaded inside global, because of compile order problems
 __webpack_require__(4);
 __webpack_require__(8);
+__webpack_require__(9);
 __webpack_require__(7);
 __webpack_require__(6);
 __webpack_require__(5);
@@ -10353,7 +10354,7 @@ try {
   window.$ = window.jQuery = __webpack_require__(0);
 } catch (e) {}
 // Selectric (custom select box)
-__webpack_require__(9);
+__webpack_require__(10);
 
 /***/ }),
 /* 4 */
@@ -10939,6 +10940,56 @@ UNISON.informationBlock.init();
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+var UNISON = UNISON || {};
+
+UNISON.MembershipCard = {
+  SELECTOR: null,
+  firstTimeInput: true,
+
+  init: function init() {
+    this.SELECTOR = $('.membership-card');
+    this.createListeners();
+  },
+
+  clearCurrentNameValue: function clearCurrentNameValue() {
+    this.SELECTOR.find('.js-membership-card-fname').empty();
+    this.SELECTOR.find('.js-membership-card-lname').empty();
+  },
+
+  onFnameInput: function onFnameInput(e) {
+    var value = $(e.currentTarget).val();
+    if (this.firstTimeInput) {
+      this.clearCurrentNameValue();
+      this.firstTimeInput = false;
+    }
+    this.SELECTOR.find('.js-membership-card-fname').html(value);
+  },
+
+  onLnameInput: function onLnameInput(e) {
+    var value = $(e.currentTarget).val();
+    if (this.firstTimeInput) {
+      this.clearCurrentNameValue();
+      this.firstTimeInput = false;
+    }
+    this.SELECTOR.find('.js-membership-card-lname').html(value);
+  },
+
+  createListeners: function createListeners() {
+    $('.js-membership-card-input-fname').on('input', function (e) {
+      UNISON.MembershipCard.onFnameInput(e);
+    });
+    $('.js-membership-card-input-lname').on('input', function (e) {
+      UNISON.MembershipCard.onLnameInput(e);
+    });
+  }
+};
+
+UNISON.MembershipCard.init();
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -12046,7 +12097,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
