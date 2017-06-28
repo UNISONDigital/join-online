@@ -10450,6 +10450,14 @@ UNISON.StandardForm = function (selector) {
           hideError(formElement);
         }
       }
+      if (formElement.hasAttribute('data-sort-code')) {
+        if (!validateSortCode(formElement.value)) {
+          showError(formElement);
+          valid = false;
+        } else {
+          hideError(formElement);
+        }
+      }
     }
     // After the loop, compare the array items you would like to match
     var k = 0,
@@ -10479,6 +10487,15 @@ UNISON.StandardForm = function (selector) {
     }
   }
 
+  function validateSortCode(value) {
+    var exp = /(?!0{2}(-?0{2}){2})(\d{2}(-\d{2}){2})|(\d{6})/;
+    if (value.match(exp)) {
+      return value;
+    } else {
+      return false;
+    }
+  }
+
   // =======================================
   // Validate email address
   // =======================================
@@ -10500,6 +10517,10 @@ UNISON.StandardForm = function (selector) {
     } else {
       selector = $(el);
     }
+    var errorElement = selector.siblings('.step__form-error-message');
+    var errorMessage = errorElement.data('error-message');
+    errorElement.html(errorMessage);
+    errorElement.addClass('step__form-error-message--active');
     selector.addClass('step__form-input--error');
   }
 
@@ -10634,12 +10655,14 @@ UNISON.StepThree = {
     var form = this.SELECTOR.find('.payment__direct-debit');
     form.addClass('payment__direct-debit--active');
     form.find('.step__form-input').attr('data-required', true);
+    form.find('.step__form-input--sort-code').attr('data-sort-code', true);
   },
 
   hideDirectDebitForm: function hideDirectDebitForm() {
     var form = this.SELECTOR.find('.payment__direct-debit');
     form.removeClass('payment__direct-debit--active');
     form.find('.step__form-input').removeAttr('data-required');
+    form.find('.step__form-input--sort-code').removeAttr('data-sort-code');
   },
 
   // ======================================

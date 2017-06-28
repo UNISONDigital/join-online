@@ -38,7 +38,11 @@
 .standard-form .step__form-input--error[type="email"],
 .standard-form .step__form-input--error[type="number"],
 .standard-form .step__form-input--error {
-  border-color: #D9534F;
+  border-color: $errorRed;
+}
+
+.standard-form .step__form-error-message {
+  color: $errorRed;
 }
 
 // =======================

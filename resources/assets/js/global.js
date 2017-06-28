@@ -83,6 +83,14 @@ UNISON.StandardForm = function(selector) {
           hideError(formElement)
         }
       }
+      if (formElement.hasAttribute('data-sort-code')) {
+        if (!validateSortCode(formElement.value)) {
+          showError(formElement);
+          valid = false;
+        } else {
+          hideError(formElement);
+        }
+      }
     }
     // After the loop, compare the array items you would like to match
     var k = 0, length = matches.length;
@@ -111,6 +119,15 @@ UNISON.StandardForm = function(selector) {
     }
   }
 
+  function validateSortCode(value) {
+    var exp = /(?!0{2}(-?0{2}){2})(\d{2}(-\d{2}){2})|(\d{6})/;
+    if (value.match(exp)) {
+      return value;
+    } else {
+      return false;
+    }
+  }
+
   // =======================================
   // Validate email address
   // =======================================
@@ -132,6 +149,10 @@ UNISON.StandardForm = function(selector) {
     } else {
       selector = $(el);
     }
+    var errorElement = selector.siblings('.step__form-error-message');
+    var errorMessage = errorElement.data('error-message');
+    errorElement.html(errorMessage);
+    errorElement.addClass('step__form-error-message--active');
     selector.addClass('step__form-input--error');
   }
 

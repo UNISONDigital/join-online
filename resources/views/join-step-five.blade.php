@@ -113,7 +113,7 @@
           </fieldset>
           <p class="step__form-selections-title">3. A bit more about me:</p>
           <fieldset class="step__form-fieldset">
-            <label for="more-about-gender">I indentify my gender as:</label>
+            <label for="more-about-gender">I identify my gender as:</label>
             <select id="more-about-gender" class="js-selectric" data-required>
               <option>Please select</option>
               <option value="more-about-option-1">Option 1</option>
@@ -123,7 +123,7 @@
             </select>
           </fieldset>
           <fieldset class="step__form-fieldset">
-            <label for="more-about-disabled">I indentify disabled:</label>
+            <label for="more-about-disabled">I identify disabled:</label>
             <select id="more-about-disabled" class="js-selectric" data-required>
               <option>Please select</option>
               <option value="more-about-option-1">Option 1</option>

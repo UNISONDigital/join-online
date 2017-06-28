@@ -27,12 +27,14 @@ UNISON.StepThree = {
     var form = this.SELECTOR.find('.payment__direct-debit')
     form.addClass('payment__direct-debit--active');
     form.find('.step__form-input').attr('data-required', true);
+    form.find('.step__form-input--sort-code').attr('data-sort-code', true);
   },
 
   hideDirectDebitForm: function() {
     var form = this.SELECTOR.find('.payment__direct-debit')
     form.removeClass('payment__direct-debit--active');
     form.find('.step__form-input').removeAttr('data-required');
+    form.find('.step__form-input--sort-code').removeAttr('data-sort-code');
   },
 
   // ======================================
