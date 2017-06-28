@@ -16,9 +16,6 @@
         </span>
       {{-- @endif --}}
     </div>
-    <div class="membership-card__helpline">
-      <span>Helpline 0800 0 857 857</span>
-    </div>
   </div>
   <div class="membership-card__logo">
     <img class="introduction__img" src="/images/logo.png" alt="Unison - Join Now">
