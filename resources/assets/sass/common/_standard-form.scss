@@ -42,7 +42,12 @@
 }
 
 .standard-form .step__form-error-message {
+  display: none;
   color: $errorRed;
+}
+
+.standard-form .step__form-error-message--active {
+  display: block;
 }
 
 // =======================
