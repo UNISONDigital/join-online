@@ -7,7 +7,7 @@
           <span>Step 2 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form" data-module="StandardForm">
+      <form class="step__form standard-form" data-module="StandardForm" action="/join-step-three">
         <div class="step__form-address">
           <div class="js-address-auto">
             <fieldset class="step__form-fieldset">

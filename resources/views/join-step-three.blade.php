@@ -7,7 +7,7 @@
           <span>Step 3 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-three" data-module="StandardForm">
+      <form class="step__form standard-form js-step-three" data-module="StandardForm" action="/join-step-four">
         <fieldset class="step__form-fieldset">
           <label>Matches we've found for your workplace:</label>
           <div class="alt-radio" tabindex="0">

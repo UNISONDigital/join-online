@@ -1,6 +1,6 @@
 <section class="signup">
   <h1 class="signup__message">Get started - it takes less than five minutes to join</h1>
-  <form class="standard-form signup__form">
+  <form class="standard-form signup__form" action="/join-step-one">
     <fieldset class="signup__fieldset">
       <label for="signup-name" class="signup__label">My name is: *</label>
       <input id="signup-name" name="name" class="signup__input step__form-input" type="text" placeholder="Enter your name" data-required>

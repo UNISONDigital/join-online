@@ -9,6 +9,7 @@ UNISON.StandardForm = function(selector) {
   var SELECTOR = selector;
   var dropdowns = [];
   var matches = [];
+  var formValid = false;
 
   function init() {
     setupDropdowns();
@@ -154,12 +155,14 @@ UNISON.StandardForm = function(selector) {
   // On form submit, validate
   // =======================================
   function onFormSubmit(e) {
-    e.preventDefault();
-    var valid = validate();
-    if (valid) {
-      submitForm()
-    } else {
-      scrollToError();
+    if (!formValid) {
+      e.preventDefault();
+      var valid = validate();
+      if (valid) {
+        submitForm()
+      } else {
+        scrollToError();
+      }
     }
   }
 
@@ -169,7 +172,8 @@ UNISON.StandardForm = function(selector) {
   // =======================================
   function submitForm() {
     var url = SELECTOR.attr('action');
-    $.ajax({ url: url });
+    formValid = true;
+    SELECTOR.submit();
   }
 
   // =======================================

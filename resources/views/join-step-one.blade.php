@@ -9,7 +9,7 @@
       </div>
       <p>We need some personal information to get your membership started.</p>
       <p><strong>We won't share that you've joined UNISON with your employer.</strong></p>
-      <form class="step__form standard-form" data-module="StandardForm">
+      <form class="step__form standard-form" data-module="StandardForm" action="/join-step-two">
         <fieldset class="step__form-fieldset step__form--title-input">
           <label for="about-title">Title</label>
           <select id="about-title" class="js-selectric" data-required data-select>

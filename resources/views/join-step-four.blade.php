@@ -7,7 +7,7 @@
           <span>Step 4 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-four" data-module="StandardForm">
+      <form class="step__form standard-form js-step-four" data-module="StandardForm" action="/join-step-five">
         <fieldset class="step__form-fieldset step__form--payment-toggle">
           <label>Please take my UNISON subscription:</label>
           <div class="alt-radio" tabindex="0">
