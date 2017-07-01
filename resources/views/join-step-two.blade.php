@@ -16,40 +16,6 @@
                 <input id="details-address-auto" name="details-address-auto" class="step__form-input js-address-auto-input" type="text" placeholder="Start typing the first line of your home address" autocomplete="off" data-url="/address/url/here" data-required>
                 <div class="standard-loader"></div>
               </div>
-              <div class="js-address-auto-results">
-                <ul class="js-address-results-listing">
-                  <li class="js-address-results-listing-item">Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                  <li>Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                  <li>Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                  <li>Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                  <li>Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                  <li>Result 1</li>
-                  <li>Result 2</li>
-                  <li>Result 3</li>
-                  <li>Result 4</li>
-                  <li>Result 5</li>
-                </ul>
-              </div>
             </fieldset>
           </div>
           <div class="js-address-manual">
@@ -60,6 +26,10 @@
             <fieldset class="step__form-fieldset">
               <label for="details-address-two">Address 2</label>
               <input id="details-address-two" name="details-address-two" class="step__form-input" type="text" placeholder="Address line 2">
+            </fieldset>
+            <fieldset class="step__form-fieldset">
+              <label for="details-address-three">Address 3</label>
+              <input id="details-address-three" name="details-address-three" class="step__form-input" type="text" placeholder="Address line 3">
             </fieldset>
             <fieldset class="step__form-fieldset">
               <label for="details-town-city">Town/City</label>

@@ -162,16 +162,19 @@ button.step__form--second-job-lookup {
 }
 
 // Form - address input - auto
-.js-address-auto .step__form-fieldset {
-  position: relative;
-}
-
 .js-address-auto--hidden {
   display: none;
 }
 
-.js-address-auto-results {
+.idpc_autocomplete {
+  position: relative;
+}
+
+.idpc_ul.hidden {
   display: none;
+}
+
+.idpc_ul {
   position: absolute;
   top: 100%;
   left: 0;
@@ -182,22 +185,14 @@ button.step__form--second-job-lookup {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  transform: translateY(-23px);
 }
 
-.js-address-auto-results--active {
-  display: block;
-}
-
-.js-address-result-listing {
-
-}
-
-.js-address-result-listing-item {
+.idpc_ul li {
   cursor: pointer;
+  padding: 10px 15px;
 }
 
-.js-address-result-listing-item:hover {
+.idpc_ul li:hover {
   background: #eee;
 }
 
@@ -224,6 +219,11 @@ button.step__form--second-job-lookup {
 
 .js-address-manual--active {
   display: block;
+}
+
+// Form - address input - toggle
+.step__form-toggle--hidden {
+  display: none;
 }
 
 // Form - payment toggle

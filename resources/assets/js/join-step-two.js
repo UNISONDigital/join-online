@@ -3,11 +3,59 @@ var UNISON = UNISON || {};
 UNISON.StepTwo = {
   SELECTOR: null,
   addressInputState: 'auto',
-  loadedAddresses: true,
+  autoCompleteController: null,
 
   init: function() {
     this.SELECTOR = $('.step__form-address');
+    this.setupAddressAutocomplete();
     this.createListeners();
+  },
+
+  setupAddressAutocomplete: function() {
+    this.autoCompleteController = new IdealPostcodes.Autocomplete.Controller({
+      api_key: "iddqd",
+      inputField: "#details-address-auto",
+      limit: 150,
+      outputFields: {
+        line_1: "#details-address-one",
+        line_2: "#details-address-two",
+        line_3: "#details-address-three",
+        post_town: "#details-town-city",
+        postcode: "#details-postcode"
+      },
+      onAddressSelected: function() {
+        UNISON.StepTwo.onAddressSelected();
+      },
+      onInput: function() {
+        UNISON.StepTwo.onAddressInput();
+      },
+      onSuggestionsRetrieved: function() {
+        UNISON.StepTwo.onAddressSuggestionsRetrieved();
+      },
+      onClose: function() {
+        UNISON.StepTwo.onAddressSuggestionsClosed();
+      }
+    });
+  },
+
+  onAddressSelected: function() {
+    this.showManualForm();
+    // Remove required attribute from auto input
+    var autoForm = this.SELECTOR.find('.js-address-auto input').removeAttr('data-required');
+    // Remove the address toggle as this is now not needed
+    this.hideAddressToggleButton();
+  },
+
+  onAddressInput: function() {
+    this.showLoader();
+  },
+
+  onAddressSuggestionsRetrieved: function() {
+    this.hideLoader();
+  },
+
+  onAddressSuggestionsClosed: function() {
+    this.hideLoader();
   },
 
   showLoader: function() {
@@ -16,34 +64,6 @@ UNISON.StepTwo = {
 
   hideLoader: function() {
     this.SELECTOR.find('.standard-loader').removeClass('standard-loader--active');
-  },
-
-  onAddressAutoInput: function(e) {
-    if (!this.loadedAddresses) {
-      var input = $(e.currentTarget);
-      var url = input.data('url');
-      this.showLoader();
-      $.ajax({
-        url: url,
-        success: function() {
-          UNISON.StepTwo.addressLoadComplete();
-        },
-        error: function() {
-          UNISON.StepTwo.addressLoadError();
-        }
-      })
-    }
-  },
-
-  addressLoadComplete: function() {
-    this.loadedAddresses = true;
-    this.hideLoader();
-    this.showAddressResults();
-  },
-
-  addressLoadError: function() {
-    this.hideLoader();
-    this.showLoadError();
   },
 
   showAddressResults: function() {
@@ -104,8 +124,12 @@ UNISON.StepTwo = {
     trigger.html(html);
   },
 
+  hideAddressToggleButton: function() {
+    this.SELECTOR.find('.js-address-toggle').addClass('step__form-toggle--hidden');
+  },
+
   createListeners: function() {
-    this.SELECTOR.find('.js-address-auto-input').on('input', function(e) { UNISON.StepTwo.onAddressAutoInput(e) });
+    // this.SELECTOR.find('.js-address-auto-input').on('input', function(e) { UNISON.StepTwo.onAddressAutoInput(e) });
     this.SELECTOR.find('.js-address-toggle').on('click', function(e) { UNISON.StepTwo.onAddressManualTriggerClicked(e) });
   }
 }
