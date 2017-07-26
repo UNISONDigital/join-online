@@ -1,0 +1,40 @@
+.onward-options {
+  max-width: 430px;
+}
+
+.onward-options fieldset {
+  display: block;
+  width: 100%;
+}
+
+input[type="submit"].onward-options__submit {
+  @include standard-button($purple, #fff);
+  padding: 20px 0 23px;
+  font-weight: bold;
+}
+
+input[type="submit"].onward-options__save {
+  @include standard-button($greyLight, #fff);
+  padding: 20px 0 23px;
+  font-weight: bold;
+}
+
+.onward-options__seperator {
+  text-align: center;
+}
+
+.onward-options__list {
+  list-style: decimal;
+  margin-top: 1em;
+  margin-left: 2em;
+}
+
+.onward-options__list-item {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 960px) {
+  .onward-options {
+    max-width: none;
+  }
+}

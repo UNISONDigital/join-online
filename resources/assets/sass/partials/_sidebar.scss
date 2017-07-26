@@ -1,0 +1,86 @@
+$sidebarContentMaxWidth: 430px;
+
+.sidebar {
+  position: absolute;
+  top: 46px;
+  right: 20px;
+  width: 40%;
+}
+
+// Membership card
+.sidebar__membership-card {
+  max-width: $sidebarContentMaxWidth;
+  margin: 0 auto;
+}
+
+// Step indicator
+.sidebar__step-message {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1.5em;
+  padding-bottom: 20px;
+}
+
+.sidebar__step-indicator {
+  max-width: $sidebarContentMaxWidth;
+  display: block;
+  margin: 40px auto;
+}
+
+.sidebar__step {
+  padding: 6px 0;
+}
+
+.sidebar__step-disc {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: $greyLight;
+  border-radius: 50%;
+}
+
+.sidebar__step-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 27px;
+}
+
+.sidebar__step--active .sidebar__step-disc {
+  background: $green;
+}
+
+.sidebar__step-label {
+  vertical-align: middle;
+  margin-left: 10px;
+  color: #000;
+  font-size: 24px;
+}
+
+@media (max-width: 1080px) {
+  .sidebar {
+    width: 45%;
+  }
+
+  .sidebar__membership-card {
+    margin: 0;
+  }
+
+  .sidebar__step-indicator {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    position: static;
+    top: 0;
+    width: 100%;
+    padding: 0 $paddingMobile;
+  }
+}

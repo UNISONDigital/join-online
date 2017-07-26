@@ -1,0 +1,315 @@
+.standard-form .step__form-input[type="text"],
+.standard-form .step__form-input[type="password"],
+.standard-form .step__form-input[type="email"],
+.standard-form .step__form-input[type="number"],
+.standard-form input[type="submit"],
+.standard-form button {
+  appearance: none;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1em;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  padding: 10px 15px;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.standard-form .step__form-input[type="text"]:focus,
+.standard-form .step__form-input[type="password"]:focus,
+.standard-form .step__form-input[type="email"]:focus,
+.standard-form .step__form-input[type="number"]:focus,
+.standard-form .step__form-input[type="submit"]:focus {
+  border: 1px solid $inputFocusBorderColour;
+}
+
+.standard-form label {
+  display: block;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.standard-form .step__form-input--error[type="text"],
+.standard-form .step__form-input--error[type="password"],
+.standard-form .step__form-input--error[type="email"],
+.standard-form .step__form-input--error[type="number"],
+.standard-form .step__form-input--error {
+  border-color: $errorRed;
+}
+
+.standard-form .step__form-error-message {
+  display: none;
+  color: $errorRed;
+}
+
+.standard-form .step__form-error-message--active {
+  display: block;
+}
+
+// =======================
+// Radio button
+// =======================
+.alt-radio {
+  padding: 5px 0;
+}
+
+.alt-radio-inline {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.alt-radio-inline .alt-radio {
+  display: table-cell;
+  vertical-align: top;
+  width: 33%;
+  height: 100%;
+  padding-right: 10px;
+}
+
+.alt-radio-inline .alt-radio:last-child {
+  padding-right: 0;
+}
+
+.alt-radio-inline .alt-radio__label {
+  background: #ECEEEF;
+  height: 100%;
+  padding: 0 10px 2px;
+}
+
+.alt-radio:focus {
+  outline: none;
+}
+
+.alt-radio__input {
+  display: none;
+}
+
+label.alt-radio__label {
+  display: table;
+  width: 100%;
+  padding: 0 14px 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alt-radio:focus > label.alt-radio__label {
+  border-color: $inputFocusBorderColour;
+}
+
+.alt-radio__input:checked + .alt-radio__label {
+  background: $green;
+}
+
+.alt-radio__radio {
+  display: table-cell;
+  vertical-align: top;
+  width: 20px;
+  padding: 10px 0;
+}
+
+.alt-radio__radio-disc {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.alt-radio__radio-disc:after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #4A4A4A;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__radio-disc:after {
+  display: block;
+}
+
+.alt-radio__copy {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__copy {
+  color: #fff;
+}
+
+.alt-radio__copy p {
+  padding: 8px 0;
+}
+
+.alt-radio__copy ul {
+  padding: 8px 0;
+  list-style: disc;
+  margin-left: 1em;
+}
+
+.alt-radio__copy a {
+  padding: 8px 0;
+  display: inline-block;
+  color: $purple;
+}
+
+.alt-radio__input:checked + .alt-radio__label .alt-radio__copy a {
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .alt-radio-inline {
+    display: block;
+  }
+
+  .alt-radio-inline .alt-radio {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .alt-radio-inline .alt-radio__label {
+    padding: 0 14px 2px;
+  }
+}
+
+// =======================
+// Radio button - tabbed
+// =======================
+.alt-radio-tabbed__container {
+  display: table;
+  width: 100%;
+  max-width: 390px;
+  border-spacing: 1px;
+  border-collapse: separate;
+}
+
+.alt-radio-tabbed {
+  display: table-cell;
+}
+
+.alt-radio-tabbed:focus {
+  outline: none;
+}
+
+label.alt-radio-tabbed__label {
+  background: $green;
+  color: #fff;
+  padding: 9px 5px;
+  line-height: 1.5em;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid $green;
+}
+
+.alt-radio-tabbed:focus .alt-radio-tabbed__label {
+  border: 1px solid $inputFocusBorderColour;
+}
+
+.alt-radio-tabbed__input:checked + .alt-radio-tabbed__label {
+  background: darken($green, 10%);
+}
+
+.alt-radio-tabbed:first-child .alt-radio-tabbed__label {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.alt-radio-tabbed:last-child .alt-radio-tabbed__label {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.alt-radio-tabbed__input {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .alt-radio-tabbed__container {
+    max-width: none;
+  }
+}
+
+// =======================
+// Currency input
+// =======================
+label.currency-input__label {
+  padding-bottom: 0;
+}
+
+.currency-input__wrap {
+  display: block;
+}
+
+.currency-input__inner {
+  position: relative;
+  display: inline-block;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.currency-input__before,
+.currency-input__after {
+  position: absolute;
+  top: 1px;
+  font-size: 20px;
+  line-height: 1em;
+  background: #fff;
+  margin: 0;
+  padding: 12px 15px;
+  background: #ECEEEF;
+  color: #999999;
+}
+
+.currency-input__before {
+  left: 1px;
+  border-right: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.step__form-input[type="number"].currency-input__input {
+  padding-right: 80px;
+  padding-left: 60px;
+}
+
+.currency-input__after {
+  right: 1px;
+  border-left: 1px solid #ccc;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.currency-display {
+  display: none;
+  max-width: 590px;
+  padding: 20px 0;
+}
+
+.currency-display__notice {
+  font-size: 40px;
+  line-height: 1.5em;
+}
+
+.currency-display--active {
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .currency-input__inner {
+    display: block;
+  }
+}

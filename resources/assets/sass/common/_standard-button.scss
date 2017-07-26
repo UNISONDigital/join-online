@@ -1,0 +1,20 @@
+@mixin standard-button($background, $color) {
+  background: $background !important;
+  color: $color !important;
+  border: 1px solid $background;
+  transition: background 200ms ease, border-color 200ms ease;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1em;
+  padding: 20px 0 23px;
+  text-decoration: none;
+
+  &:hover {
+    background: lighten($background, 7%) !important;
+    border-color: lighten($background, 7%) !important;
+  }
+
+  &:focus {
+    border-color: $inputFocusBorderColour;
+  }
+}

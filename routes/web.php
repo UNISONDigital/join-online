@@ -12,5 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+});
+
+Route::get('/join-step-one', function () {
+  return view('join-step-one');
+});
+
+Route::get('/join-step-two', function () {
+  return view('join-step-two');
+});
+
+Route::get('/join-step-three', function () {
+  return view('join-step-three');
+});
+
+Route::get('/join-step-four', function () {
+  return view('join-step-four');
+});
+
+Route::get('/join-step-five', function () {
+  return view('join-step-five');
 });

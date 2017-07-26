@@ -20,9 +20,18 @@ The goal is for it to serve a template for a future agency to take over the ongo
   - Dump completed sign-ups to CSV
 
 ## Set up 
-1. Clone the repo
-2. Run `composer install` 
+1. Clone repo
+2. Run `composer install`
 3. Create a database and update your `.env` with your log-in details
-4. Run `CREATE EXTENSION postgis;` in your database 
+4. Run `CREATE EXTENSION postgis;` in your database
+5. Run `php artisan key:generate`
 5. Run `php artisan migrate:refresh` 
 6. Run `php artisan db:seed`. (Get a cup of tea, this will take a while.)
+5. Run `php artisan serve`
+6. Visit `localhost:8000`
+
+## Assets (css/js)
+1. `npm install`
+2. `npm run dev` or `npm run watch`
+
+For further information - [https://laravel.com/docs/5.4/mix](https://laravel.com/docs/5.4/mix)

@@ -1,0 +1,11 @@
+.image-block {
+  max-width: 1440px;
+  margin: 0 auto;
+  @include aspect-ratio(1440, 600);
+}
+
+.image-block__background {
+  background-image: url('/images/homepage-full-image.jpg');
+  background-size: cover;
+  background-position: center center;
+}

@@ -1,0 +1,330 @@
+.step {
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+.step__content {
+  width: 60%;
+  float: left;
+  padding: 0 $padding;
+}
+
+// Header
+.step__header {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.step__header-title {
+  font-size: 40px;
+}
+
+.step__header-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 100px;
+  background: $green;
+}
+
+.step__header-arrow-head {
+  position: absolute;
+  top: -15px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 60px solid $green;
+}
+
+.step__counter {
+  color: #818A91;
+}
+
+// Form
+.step__form {
+  padding-top: 5px;
+  padding-bottom: 100px;
+}
+
+.step__form-fieldset {
+  display: block;
+  padding: 25px 0;
+}
+
+.step__form--explainer-title {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.step__form--explainer {
+  color: #818A91;
+}
+
+.step__form-toggle {
+  display: inline-block;
+  color: $purple;
+  margin-top: -10px;
+}
+
+.step__form-footnote {
+  display: inline-block;
+  color: #818A91;
+  padding: 5px 0;
+}
+
+.step__form-link a {
+  color: $purple;
+}
+
+.step__form-title {
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+.step__form-paragraph {
+  padding: 20px 0;
+}
+
+// Form - selections (step five)
+.step__form-selections-title {
+  font-size: 30px;
+  line-height: 1.25em;
+  padding-top: 60px;
+}
+
+// Form - two up
+.step__form--two-up {
+  display: table;
+  width: 100%;
+}
+
+.step__form--two-up .step__form-fieldset {
+  width: 50%;
+  display: inline-block;
+}
+
+.step__form--two-up .step__form-fieldset:first-child {
+  padding-right: 20px;
+}
+
+.step__form--two-up .step__form-fieldset:last-child {
+  padding-left: 20px;
+}
+
+// Form - DOB
+.step__form--dob {
+  display: table;
+  width: 100%;
+}
+
+.step__form--dob .step__form-fieldset {
+  display: inline-block;
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+// Form - title input
+.step__form--title-input {
+  display: inline-block;
+  min-width: 230px;
+}
+
+// Form - second job
+.step__form--second-job .alt-radio {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.step__form--second-job-extra {
+  display: none;
+}
+
+.step__form--second-job-extra--active {
+  display: block;
+}
+
+button.step__form--second-job-lookup {
+  @include standard-button($green, #fff);
+  display: inline-block;
+  margin-top: 20px;
+  max-width: 290px;
+}
+
+// Form - address container
+.step__form-address {
+  padding-bottom: 20px;
+}
+
+// Form - address input - auto
+.js-address-auto--hidden {
+  display: none;
+}
+
+.idpc_autocomplete {
+  position: relative;
+}
+
+.idpc_ul.hidden {
+  display: none;
+}
+
+.idpc_ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 170px;
+  overflow: scroll;
+  z-index: $zIndexAddressResults;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.idpc_ul li {
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.idpc_ul li:hover {
+  background: #eee;
+}
+
+.step__form-loading-container {
+  position: relative;
+}
+
+.standard-loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  margin-top: -13px;
+}
+
+.standard-loader--active {
+  display: block;
+}
+
+// Form - address input - manual
+.js-address-manual {
+  display: none;
+}
+
+.js-address-manual--active {
+  display: block;
+}
+
+// Form - address input - toggle
+.step__form-toggle--hidden {
+  display: none;
+}
+
+// Form - payment toggle
+.step__form--payment-toggle .alt-radio {
+  display: block;
+}
+
+// Form - payment - by salary
+.payment__salary--hidden {
+  display: none;
+}
+
+.payment__option-title {
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+.payment__option-paragraph {
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+// Form - payment - by direct debit
+.payment__direct-debit {
+  display: none;
+}
+
+.payment__direct-debit--active {
+  display: block;
+}
+
+@media (max-width: 1240px) {
+  .step__header-arrow {
+    position: relative;
+    margin: 40px 0;
+  }
+}
+
+@media (max-width: 1080px) {
+  .step__content {
+    width: 55%;
+  }
+}
+
+@media (max-width: 960px) {
+  .step__content {
+    float: none;
+    width: 100%;
+    padding: 0 $paddingMobile;
+  }
+
+  .step__form {
+    padding-bottom: 40px;
+  }
+
+  .step__header-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .step__form-fieldset {
+    display: block;
+  }
+
+  .step__form--two-up .step__form-fieldset {
+    width: 100%;
+    display: block;
+  }
+
+  .step__form--two-up .step__form-fieldset:first-child {
+    padding-right: 0;
+  }
+
+  .step__form--two-up .step__form-fieldset:last-child {
+    padding-left: 0;
+  }
+
+  .step__form--dob {
+    padding-bottom: 20px;
+  }
+
+  .step__form--dob .step__form-fieldset {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    padding: 10px 0;
+  }
+
+  .step__form--title-input {
+    width: 100%;
+    min-width: none;
+  }
+
+  .step__form--second-job .alt-radio {
+    display: block;
+    margin-right: 0;
+  }
+
+  button.step__form--second-job-lookup {
+    display: block;
+    max-width: none;
+  }
+}

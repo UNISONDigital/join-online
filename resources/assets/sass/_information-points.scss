@@ -1,0 +1,170 @@
+// Information points wrapper
+.information-points {
+  padding: 0 $padding 60px;
+}
+
+.information-points__title {
+  font-size: 40px;
+  padding: 46px 0 24px;
+}
+
+.information-points__subtitle {
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.information-points--layout-exception .information-blocks__row .information-points__subtitle {
+  display: none;
+}
+
+// Information blocks
+.information-blocks__headings {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.information-blocks__heading {
+  display: table-cell;
+  width: 50%;
+}
+
+.information-blocks__heading:first-child {
+  padding-right: 42px;
+}
+
+.information-blocks__heading:last-child {
+  padding-left: 42px;
+}
+
+.information-blocks__row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+.information-blocks__row--single {
+  display: inline-block;
+  width: 50%;
+}
+
+.information-block {
+  display: table-cell;
+  vertical-align: top;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.information-points--layout-exception .information-block:nth-child(2),
+.information-block:first-child {
+  padding-right: 42px;
+}
+
+.information-block:last-child {
+  padding-left: 42px;
+}
+
+.information-blocks__row--single .information-block:first-child {
+  padding-left: 0;
+}
+
+.information-block__inner {
+  position: relative;
+  height: 100%;
+  border: 1px solid #4A4A4A;
+  overflow: hidden;
+}
+
+.information-block__title {
+  position: relative;
+  background: $green;
+  padding: 15px 10px 20px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1em;
+  color: #fff;
+  z-index: $zIndexInfoBlockTitle;
+}
+
+.information-block__points {
+  height: 100%;
+}
+
+.information-block__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+
+.information-block__items {
+  position: relative;
+  height: 100%;
+  list-style: disc;
+  padding: 20px 20px 20px 40px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: $zIndexInfoBlockItems;
+  background: #fff;
+  transition: opacity 200ms ease, visibility 200ms ease;
+}
+
+.information-block__items--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 860px) {
+  .information-points {
+    padding: 0 $paddingMobile 20px;
+  }
+
+  .information-points__title {
+    font-size: 34px;
+    padding: 20px 0 0;
+  }
+
+  .information-points__subtitle {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
+  .information-points--layout-exception .information-blocks__row .information-points__subtitle {
+    display: block;
+  }
+
+  .information-blocks__row {
+    padding-bottom: 0;
+  }
+
+  .information-blocks__row--single {
+    display: block;
+    width: 100%;
+  }
+
+  .information-block {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .information-blocks__headings {
+    display: none;
+  }
+
+  .information-points--layout-exception .information-block:nth-child(2),
+  .information-block:first-child {
+    padding-right: 0;
+  }
+
+  .information-block:last-child {
+    padding-left: 0;
+  }
+}
