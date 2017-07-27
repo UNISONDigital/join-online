@@ -6,6 +6,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="/css/app.css">
+		<link rel="stylesheet" href="/css/selectize.css">
+		<script src="/js/app.js"></script>
+	  <script>
+	  	$(function() {
+	  		$.ajax({url: '/api/joiners-last-week'}).done(function(response) {
+	  			$('.js-last-week').text(response.result);
+	  		});
+	  	});
+	  </script>
 	</head>
 	<body>
 		<main class="site__container">
@@ -23,7 +32,7 @@
 					@if (Request::is('/'))
 						<hgroup class="introduction__copy">
 							<h1 class="introduction__title">My journey into UNISON membership</h1>
-							<h2 class="introduction__byline">Join 1.25 million public service workers already in UNISON. 2,154 people have joined in the last 7 days.</h2>
+							<h2 class="introduction__byline">Join 1.25 million public service workers already in UNISON. <span class="js-last-week"></span> people have joined in the last 7 days.</h2>
 						</hgroup>
 					@endif
 				</div>
