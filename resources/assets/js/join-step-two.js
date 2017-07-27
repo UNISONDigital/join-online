@@ -7,8 +7,15 @@ UNISON.StepTwo = {
 
   init: function() {
     this.SELECTOR = $('.step__form-address');
-    this.setupAddressAutocomplete();
-    this.createListeners();
+
+    if ($('#details-address-auto').length == 1) {
+	    this.setupAddressAutocomplete();
+
+	    if ($('.js-has-details').length == 1) {
+	    	this.toggleAddressInputState();
+	    }
+    	this.createListeners();
+    }
   },
 
   setupAddressAutocomplete: function() {
@@ -92,25 +99,25 @@ UNISON.StepTwo = {
   showManualForm: function() {
     var manualForm = this.SELECTOR.find('.js-address-manual');
     manualForm.addClass('js-address-manual--active');
-    manualForm.find('input').attr('data-required', true);
+    manualForm.find('input.required').attr('data-required', true);
   },
 
   hideManualForm: function() {
     var manualForm = this.SELECTOR.find('.js-address-manual');
     manualForm.removeClass('js-address-manual--active');
-    manualForm.find('input').removeAttr('data-required');
+    manualForm.find('input.required').removeAttr('data-required');
   },
 
   showAutoForm: function() {
     var autoForm = this.SELECTOR.find('.js-address-auto');
     autoForm.removeClass('js-address-auto--hidden');
-    autoForm.find('input').attr('data-required', true);
+    autoForm.find('input.required').attr('data-required', true);
   },
 
   hideAutoForm: function() {
     var autoForm = this.SELECTOR.find('.js-address-auto');
     autoForm.addClass('js-address-auto--hidden');
-    autoForm.find('input').removeAttr('data-required');
+    autoForm.find('input.required').removeAttr('data-required');
   },
 
   updateTrigger: function() {
