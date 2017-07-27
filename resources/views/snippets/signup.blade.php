@@ -1,13 +1,9 @@
 <section class="signup">
   <h1 class="signup__message">Get started - it takes less than five minutes to join</h1>
-  <form class="standard-form signup__form" action="/join-step-one">
+  <form class="standard-form signup__form" action="/begin-application" method="post">
     <fieldset class="signup__fieldset">
-      <label for="signup-name" class="signup__label">My name is: *</label>
-      <input id="signup-name" name="name" class="signup__input step__form-input" type="text" placeholder="Enter your name" data-required>
-    </fieldset>
-    <fieldset class="signup__fieldset">
-      <label for="signup-workplace" class="signup__label">I work at: *</label>
-      <input id="signup-workplace" name="signup-workplace" class="signup__input step__form-input" type="text" placeholder="Your workplace" data-required>
+      <label for="signup-name" class="signup__label">My first name is: *</label>
+      <input id="signup-name" name="first_name" class="signup__input step__form-input" type="text" placeholder="Enter your  first name" data-required>
     </fieldset>
     <fieldset class="signup__fieldset">
       <label for="signup-email" class="signup__label">UNISON can contact me on: *</label>
@@ -16,6 +12,9 @@
     <fieldset class="signup__fieldset signup__fieldset-submit">
       <input class="signup__submit" type="submit" value="Join now">
     </fieldset>
+
+    {{ csrf_field() }}
+    <input type="hidden" name="token" value="{{ $token }}" />
   </form>
   <div class="signup__note">
     <p>* required fields</p>
