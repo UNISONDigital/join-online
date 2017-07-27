@@ -6,3 +6,5 @@ require('./snippets/membershipCard');
 require('./join-step-two');
 require('./join-step-three');
 require('./join-step-four');
+
+console.log('Loading UNISON Join')
