@@ -1,11 +1,22 @@
 var UNISON = UNISON || {};
 
-UNISON.StepThree = {
+UNISON.StepFour = {
   SELECTOR: null,
 
   init: function() {
     this.SELECTOR = $('.js-step-four');
     this.createListeners();
+
+    this.hideDirectDebitForm();
+    this.hideSalaryForm();
+
+    // show the correct form based on the payment method
+    if ($('.js-payment-salary').is(':checked')) {
+    	this.showSalaryForm();
+    }
+    if ($('.js-payment-direct-debit').is(':checked')) {
+    	this.showDirectDebitForm();
+    }
   },
 
   // ======================================
@@ -42,6 +53,7 @@ UNISON.StepThree = {
   // ======================================
   onPaymentInputChange: function(e) {
     var paymentType = $(e.currentTarget).val();
+    console.log('test')
     if (paymentType === 'salary') {
       this.showSalaryForm();
       this.hideDirectDebitForm();
@@ -55,8 +67,9 @@ UNISON.StepThree = {
   // Create all event listeners
   // ======================================
   createListeners: function() {
-    this.SELECTOR.find('.step__form--payment-toggle input').on('change', function(e) { UNISON.StepThree.onPaymentInputChange(e); });
+  	console.log(this.SELECTOR.find('.step__form--payment-toggle input:radio'))
+    this.SELECTOR.find('.step__form--payment-toggle input:radio').on('change', function(e) { UNISON.StepFour.onPaymentInputChange(e); });
   }
 };
 
-UNISON.StepThree.init();
+UNISON.StepFour.init();

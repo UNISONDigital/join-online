@@ -2,42 +2,16 @@ var UNISON = UNISON || {};
 
 UNISON.StepThree = {
   SELECTOR: null,
-  salaryRanges: [
-    {
-      'start': 0,
-      'end': 9999,
-      'cost': 2
-    },
-    {
-      'start': 10000,
-      'end': 19999,
-      'cost': 5
-    },
-    {
-      'start': 20000,
-      'end': 29999,
-      'cost': 10
-    },
-    {
-      'start': 30000,
-      'end': 39999,
-      'cost': 15
-    },
-    {
-      'start': 40000,
-      'end': 49999,
-      'cost': 20
-    },
-    {
-      'start': 50000,
-      'end': 999999999999999999999999,
-      'cost': 40
-    }
-  ],
 
   init: function() {
     this.SELECTOR = $('.js-step-three');
     this.createListeners();
+    this.setupEmployerSelectize();
+
+    console.log($('.js-employer-name').data('manual-entry'))
+    if ($('.js-employer-name').data('manual-entry') == 'true') {
+    	this.onManuallyEnterEmployer(null);
+    }
   },
 
   // ======================================
@@ -53,18 +27,6 @@ UNISON.StepThree = {
 
   hideCalculation: function() {
     this.SELECTOR.find('.currency-display').removeClass('currency-display--active');
-  },
-
-  checkCost: function(value) {
-    var i = 0;
-    for (; i < this.salaryRanges.length; i++) {
-      var start = this.salaryRanges[i].start;
-      var end = this.salaryRanges[i].end;
-      var cost = this.salaryRanges[i].cost;
-      if (value >= start && value <= end) {
-        return cost;
-      }
-    }
   },
 
   // ======================================
@@ -106,12 +68,119 @@ UNISON.StepThree = {
     }
   },
 
+  onManuallyEnterEmployer: function(e) {
+  	if (e) {
+  		e.preventDefault();
+  	}
+
+  	$('.js-automatic-employer').hide();
+  	$('.js-manual-employer').show();
+  },
+
+  lookupWorkplaces: function(employerId) {
+  	$.ajax({'url': '/api/workplaces/' + employerId}).done(function(res) {
+  		res.result.forEach(function(workplace, index) {
+  			var clone = $('.js-workplace-template').clone();
+  			var workplace_id = 'workplace-' + index;
+
+  			$('.js-workplace-address', clone).text(workplace.address_1);
+  			$('.js-workplace-type', clone).text(workplace.workplace_type);
+  			$('input', clone).attr('value', workplace.id).attr('id', workplace_id);
+  			$('label', clone).attr('for', workplace_id);
+
+  			clone.appendTo('.js-workplaces');
+  			clone.show();
+  		});
+
+  		$('.js-workplaces').slideDown();
+  	});
+  },
+
+  setupEmployerSelectize: function() {
+  	var lookupWorkplaces = this.lookupWorkplaces;
+
+		$('.js-employer').selectize({
+			valueField: 'rms_id',
+			labelField: 'name',
+			searchField: 'name',
+			maxItems: 1,
+			options: [],
+			create: false,
+			render: {
+				option: function(item, escape) {
+					return '<div>' + item.name + '(' + item.service_group + ')</div>';
+				}
+			},
+			onChange: function(value) {
+				lookupWorkplaces(value);
+			},
+			load: function(query, callback) {
+				if (!query.length) return callback();
+				$.ajax({
+					url: '/api/employers/search?q=' + encodeURIComponent(query),
+					type: 'GET',
+					dataType: 'JSON',
+					error: function() {
+						callback();
+					},
+					success: function(res) {
+						callback(res.result);
+					}
+				});
+			}
+		});
+	},
+
+	recalculateBand: function(e) {
+		var salary = $('.js-salary').val();
+		var frequency = $('input[name="work-salary-frequency"]').val();
+		var hoursPerWeek = $('.js-hours-per-week').val();
+
+		var total = 0;
+
+		if (frequency == 'hourly') {
+			total = (salary * hoursPerWeek) * 52;
+		}
+		else if (frequency == 'weekly') {
+			total = salary * 52;
+		}
+		else if (frequency == 'monthly') {
+			total = salary * 12;
+		}
+		else {
+			total = salary;
+		}
+
+		$.ajax({url: '/api/salary-to-band/' + total}).done(function(response) {
+			if (response.success === true) {
+				UNISON.StepThree.showCalculation();
+				$('.js-subscription-calculation').text(response.result.rate);
+			}
+		});
+	},
+
+	onFrequencyChanged: function(e) {
+		var frequency = $('input[name="work-salary-frequency"]').val();
+
+		if (frequency == 'hourly') {
+			$('.js-hours-per-week-container').show();
+		}
+		else {
+			$('.js-hours-per-week-container').hide();
+		}
+
+		recalculateBand();
+	},
+
   // ======================================
   // Create all event listeners
   // ======================================
   createListeners: function() {
+  	this.SELECTOR.find('.js-salary,.js-hours-per-week').on('keyup', function(e) { UNISON.StepThree.recalculateBand(); });
+  	this.SELECTOR.find('js-salary-frequency').on('click', function() { UNISON.StepThree.onFrequencyChanged(); });
     this.SELECTOR.find('.currency-input__input').on('input', function(e) { UNISON.StepThree.onCurrencyInput(e); });
     this.SELECTOR.find('.step__form--second-job input').on('change', function(e) { UNISON.StepThree.onSecondaryJobInputChange(e); });
+  	this.SELECTOR.find('.js-cant-find-employer').on('click', function(e) { UNISON.StepThree.onManuallyEnterEmployer(e); });
   }
 };
 

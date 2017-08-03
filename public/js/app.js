@@ -10612,12 +10612,23 @@ UNISON.Global.init();
 
 var UNISON = UNISON || {};
 
-UNISON.StepThree = {
+UNISON.StepFour = {
   SELECTOR: null,
 
   init: function init() {
     this.SELECTOR = $('.js-step-four');
     this.createListeners();
+
+    this.hideDirectDebitForm();
+    this.hideSalaryForm();
+
+    // show the correct form based on the payment method
+    if ($('.js-payment-salary').is(':checked')) {
+      this.showSalaryForm();
+    }
+    if ($('.js-payment-direct-debit').is(':checked')) {
+      this.showDirectDebitForm();
+    }
   },
 
   // ======================================
@@ -10654,6 +10665,7 @@ UNISON.StepThree = {
   // ======================================
   onPaymentInputChange: function onPaymentInputChange(e) {
     var paymentType = $(e.currentTarget).val();
+    console.log('test');
     if (paymentType === 'salary') {
       this.showSalaryForm();
       this.hideDirectDebitForm();
@@ -10667,13 +10679,14 @@ UNISON.StepThree = {
   // Create all event listeners
   // ======================================
   createListeners: function createListeners() {
-    this.SELECTOR.find('.step__form--payment-toggle input').on('change', function (e) {
-      UNISON.StepThree.onPaymentInputChange(e);
+    console.log(this.SELECTOR.find('.step__form--payment-toggle input:radio'));
+    this.SELECTOR.find('.step__form--payment-toggle input:radio').on('change', function (e) {
+      UNISON.StepFour.onPaymentInputChange(e);
     });
   }
 };
 
-UNISON.StepThree.init();
+UNISON.StepFour.init();
 
 /***/ }),
 /* 4 */
@@ -10688,6 +10701,11 @@ UNISON.StepThree = {
     this.SELECTOR = $('.js-step-three');
     this.createListeners();
     this.setupEmployerSelectize();
+
+    console.log($('.js-employer-name').data('manual-entry'));
+    if ($('.js-employer-name').data('manual-entry') == 'true') {
+      this.onManuallyEnterEmployer(null);
+    }
   },
 
   // ======================================
@@ -10744,6 +10762,15 @@ UNISON.StepThree = {
     }
   },
 
+  onManuallyEnterEmployer: function onManuallyEnterEmployer(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    $('.js-automatic-employer').hide();
+    $('.js-manual-employer').show();
+  },
+
   lookupWorkplaces: function lookupWorkplaces(employerId) {
     $.ajax({ 'url': '/api/workplaces/' + employerId }).done(function (res) {
       res.result.forEach(function (workplace, index) {
@@ -10758,6 +10785,8 @@ UNISON.StepThree = {
         clone.appendTo('.js-workplaces');
         clone.show();
       });
+
+      $('.js-workplaces').slideDown();
     });
   },
 
@@ -10837,7 +10866,7 @@ UNISON.StepThree = {
   // Create all event listeners
   // ======================================
   createListeners: function createListeners() {
-    this.SELECTOR.find('.js-salary,.js-hours-per-week').on('click', function (e) {
+    this.SELECTOR.find('.js-salary,.js-hours-per-week').on('keyup', function (e) {
       UNISON.StepThree.recalculateBand();
     });
     this.SELECTOR.find('js-salary-frequency').on('click', function () {
@@ -10848,6 +10877,9 @@ UNISON.StepThree = {
     });
     this.SELECTOR.find('.step__form--second-job input').on('change', function (e) {
       UNISON.StepThree.onSecondaryJobInputChange(e);
+    });
+    this.SELECTOR.find('.js-cant-find-employer').on('click', function (e) {
+      UNISON.StepThree.onManuallyEnterEmployer(e);
     });
   }
 };
@@ -14200,7 +14232,7 @@ var UNISON = UNISON || {};
 
 UNISON.MembershipCard = {
   SELECTOR: null,
-  firstTimeInput: true,
+  firstTimeInput: false,
 
   init: function init() {
     this.SELECTOR = $('.membership-card');
@@ -14231,10 +14263,10 @@ UNISON.MembershipCard = {
   },
 
   createListeners: function createListeners() {
-    $('.js-membership-card-input-fname').on('input', function (e) {
+    $('.js-first-name').on('input', function (e) {
       UNISON.MembershipCard.onFnameInput(e);
     });
-    $('.js-membership-card-input-lname').on('input', function (e) {
+    $('.js-last-name').on('input', function (e) {
       UNISON.MembershipCard.onLnameInput(e);
     });
   }
