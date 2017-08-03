@@ -2,7 +2,7 @@ var UNISON = UNISON || {};
 
 UNISON.MembershipCard = {
   SELECTOR: null,
-  firstTimeInput: true,
+  firstTimeInput: false,
 
   init: function() {
     this.SELECTOR = $('.membership-card');
@@ -33,8 +33,8 @@ UNISON.MembershipCard = {
   },
 
   createListeners: function() {
-    $('.js-membership-card-input-fname').on('input', function(e) { UNISON.MembershipCard.onFnameInput(e); });
-    $('.js-membership-card-input-lname').on('input', function(e) { UNISON.MembershipCard.onLnameInput(e); });
+    $('.js-first-name').on('input', function(e) { UNISON.MembershipCard.onFnameInput(e); });
+    $('.js-last-name').on('input', function(e) { UNISON.MembershipCard.onLnameInput(e); });
   }
 }
 
