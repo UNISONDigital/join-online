@@ -8,13 +8,9 @@
       <span>UNISON Member</span>
     </div>
     <div class="membership-card__name js-membership-card-name">
-      {{-- @if ($fullName)
-        <span>{{ $fullName }}</span>
-      @else --}}
-        <span class="js-membership-card-fullname">
-          <span class="js-membership-card-fname">Your</span> <span class="js-membership-card-lname">name...</span>
-        </span>
-      {{-- @endif --}}
+      <span class="js-membership-card-fullname">
+        <span class="js-membership-card-fname">{{ $application->getFirstName() }}</span> <span class="js-membership-card-lname">{{ $application->getLastName() }}</span>
+      </span>
     </div>
   </div>
   <div class="membership-card__logo">
