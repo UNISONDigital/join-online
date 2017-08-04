@@ -9,7 +9,7 @@
     </div>
     <div class="membership-card__name js-membership-card-name">
       <span class="js-membership-card-fullname">
-      	@if ($application)
+      	@if (isset($application))
         	<span class="js-membership-card-fname">{{ $application->getFirstName() }}</span> <span class="js-membership-card-lname">{{ $application->getLastName() }}</span>
         @else
         	<span class="js-membership-card-fname">Your</span> <span class="js-membership-card-lname">name..</span>
