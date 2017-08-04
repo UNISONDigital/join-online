@@ -10679,7 +10679,6 @@ UNISON.StepFour = {
   // Create all event listeners
   // ======================================
   createListeners: function createListeners() {
-    console.log(this.SELECTOR.find('.step__form--payment-toggle input:radio'));
     this.SELECTOR.find('.step__form--payment-toggle input:radio').on('change', function (e) {
       UNISON.StepFour.onPaymentInputChange(e);
     });
@@ -10702,7 +10701,7 @@ UNISON.StepThree = {
     this.createListeners();
     this.setupEmployerSelectize();
 
-    console.log($('.js-employer-name').data('manual-entry'));
+    console.log($('.js-employer-name'));
     if ($('.js-employer-name').data('manual-entry') == 'true') {
       this.onManuallyEnterEmployer(null);
     }
@@ -10766,6 +10765,7 @@ UNISON.StepThree = {
     if (e) {
       e.preventDefault();
     }
+    console.log('here');
 
     $('.js-automatic-employer').hide();
     $('.js-manual-employer').show();
@@ -10802,7 +10802,7 @@ UNISON.StepThree = {
       create: false,
       render: {
         option: function option(item, escape) {
-          return '<div>' + item.name + '(' + item.service_group + ')</div>';
+          return '<div>' + item.name + '(' + item.id + ')</div>';
         }
       },
       onChange: function onChange(value) {

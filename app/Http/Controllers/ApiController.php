@@ -103,7 +103,7 @@ class ApiController extends Controller
 		if ($search_type == 'name') 
 		{
 			$result = Employer::where('name', 'ILIKE', "%$q%")->
-				select('name', 'service_group', 'rms_id')->
+				select('name', 'service_group', 'rms_id', 'id')->
 				take(10)->
 				get()->
 				toArray();
