@@ -67,7 +67,6 @@ UNISON.StepFour = {
   // Create all event listeners
   // ======================================
   createListeners: function() {
-  	console.log(this.SELECTOR.find('.step__form--payment-toggle input:radio'))
     this.SELECTOR.find('.step__form--payment-toggle input:radio').on('change', function(e) { UNISON.StepFour.onPaymentInputChange(e); });
   }
 };
