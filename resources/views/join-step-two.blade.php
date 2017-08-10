@@ -29,6 +29,8 @@
             </fieldset>
           </div>
           <div class="js-address-manual">
+          	<p><a href="#" class="js-show-lookup">Search for another address</a></p>
+
             <fieldset class="step__form-fieldset">
               <label for="details-address-one">Address 1*</label>
               <input id="details-address-one" name="address_1" class="step__form-input required" type="text" placeholder="Address line 1" autocomplete="street-address" value="{{ $application->address_1 }}">

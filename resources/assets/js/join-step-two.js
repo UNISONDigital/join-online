@@ -53,6 +53,11 @@ UNISON.StepTwo = {
     this.hideAddressToggleButton();
   },
 
+  onShowLookup: function(e) {
+  	e.preventDefault();
+  	this.showAddressToggleButton();
+  },
+
   onAddressInput: function() {
     this.showLoader();
   },
@@ -135,9 +140,15 @@ UNISON.StepTwo = {
     this.SELECTOR.find('.js-address-toggle').addClass('step__form-toggle--hidden');
   },
 
+  showAddressToggleButton: function() {
+    var autoForm = this.SELECTOR.find('.js-address-auto');
+    autoForm.removeClass('js-address-auto--hidden');
+  },
+
   createListeners: function() {
     // this.SELECTOR.find('.js-address-auto-input').on('input', function(e) { UNISON.StepTwo.onAddressAutoInput(e) });
     this.SELECTOR.find('.js-address-toggle').on('click', function(e) { UNISON.StepTwo.onAddressManualTriggerClicked(e) });
+  	this.SELECTOR.find('.js-show-lookup').on('click', function(e) { UNISON.StepTwo.onShowLookup(e); });
   }
 }
 
