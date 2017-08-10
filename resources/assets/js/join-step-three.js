@@ -82,8 +82,13 @@ UNISON.StepThree = {
 
   lookupWorkplaces: function(employerId) {
   	$.ajax({'url': '/api/workplaces/' + employerId}).done(function(res) {
+  		$('.js-workplaces .js-workplace').remove();
+
   		res.result.forEach(function(workplace, index) {
   			var clone = $('.js-workplace-template').clone();
+  			clone.removeClass('js-workplace-template');
+  			clone.addClass('js-workplace');
+
   			var workplace_id = 'workplace-' + index;
 
   			$('.js-workplace-address', clone).text(workplace.address_1);
