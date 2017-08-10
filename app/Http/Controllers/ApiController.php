@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Workplace;
 use App\Employer;
 use App\Postcode;
+use App\Application;
 
 use Illuminate\Http\Request;
 
@@ -35,53 +36,7 @@ class ApiController extends Controller
 		if ($salary && filter_var($salary, FILTER_VALIDATE_FLOAT)) 
 		{
 			$success = true;
-
-			switch(true) 
-			{
-				case $salary <= 2000:
-					$result = ['band' => 'A', 'rate' => '£1.30'];
-					break;
-
-				case $salary <= 5000:
-					$result = ['band' => 'B', 'rate' => '£3.50'];
-					break;
-
-				case $salary <= 8000:
-					$result = ['band' => 'C', 'rate' => '£5.30'];
-					break;
-
-				case $salary <= 11000:
-					$result = ['band' => 'D', 'rate' => '£6.60'];
-					break;
-
-				case $salary <= 14000:
-					$result = ['band' => 'E', 'rate' => '£7.85'];
-					break;
-
-				case $salary <= 17000:
-					$result = ['band' => 'F', 'rate' => '£9.70'];
-					break;
-
-				case $salary <= 20000:
-					$result = ['band' => 'G', 'rate' => '£11.50'];
-					break;
-
-				case $salary <= 25000:
-					$result = ['band' => 'H', 'rate' => '£14.00'];
-					break;
-
-				case $salary <= 30000:
-					$result = ['band' => 'I', 'rate' => '£17.25'];
-					break;
-
-				case $salary <= 35000:
-					$result = ['band' => 'J', 'rate' => '£20.30'];
-					break;
-
-				default:
-					$result = ['band' => 'K', 'rate' => '£22.50'];
-					break;
-			}
+			$result = Application::calculateCost($salary);
 		} 
 		else 
 		{
@@ -138,7 +93,7 @@ class ApiController extends Controller
 	{
 		$raw_postcode = $request->input('postcode');
 
-		$query = Workplace::where('employer_id', '=', $employer_id)->
+		$query = Workplace::where('id', '=', $employer_id)->
 			select('id', 'address_1', 'address_2', 'address_3', 'postcode', 'workplace_type');
 
 		if ($raw_postcode) 

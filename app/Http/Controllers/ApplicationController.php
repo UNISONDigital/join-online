@@ -173,7 +173,12 @@ class ApplicationController extends Controller
 
 		if ($application)
 		{
-	  	return view('join-step-four', ['application' => $application]);
+			$cost = $application->getCost();
+			
+	  	return view('join-step-four', [
+				'application' => $application, 
+				'cost' => $cost['rate']
+			]);
 	  }
 	  else
 	  {
