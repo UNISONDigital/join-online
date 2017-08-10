@@ -174,7 +174,7 @@ class ApplicationController extends Controller
 		if ($application)
 		{
 			$cost = $application->getCost();
-			
+
 	  	return view('join-step-four', [
 				'application' => $application, 
 				'cost' => $cost['rate']
@@ -198,7 +198,8 @@ class ApplicationController extends Controller
 			'payroll_consent' => $request->input('payroll_consent'),
 			'direct_debit_account_name' => $request->input('direct_debit_account_name'),
 			'direct_debit_account_number' => $request->input('direct_debit_account_number'),
-			'direct_debit_sort_code' => $request->input('direct_debit_sort_code')
+			'direct_debit_sort_code' => $request->input('direct_debit_sort_code'),
+			'direct_debit_day_of_month' => $request->input('direct_debit_day_of_month')
 		]);
 		$application->save();
 

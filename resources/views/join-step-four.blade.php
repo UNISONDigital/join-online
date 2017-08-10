@@ -70,7 +70,7 @@
           </fieldset>
           <fieldset class="step__form-fieldset">
             <label for="payment-dd-sort-code">Sort code</label>
-            <input id="payment-dd-sort-code" name="direct_debit_sort_code" class="step__form-input step__form-input--sort-code" type="text" placeholder="11-22-33">
+            <input id="payment-dd-sort-code" name="direct_debit_sort_code" class="step__form-input step__form-input--sort-code" type="text" placeholder="11-22-33" value="{{ $application->direct_debit_sort_code }}">
             <p class="step__form-error-message" data-error-message="Format needs to be XX-XX-XX or XXXXXX"></p>
           </fieldset>
           <fieldset class="step__form-fieldset step__form--title-input">
