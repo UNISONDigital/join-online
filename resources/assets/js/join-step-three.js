@@ -52,9 +52,8 @@ UNISON.StepThree = {
     var input = $(e.currentTarget);
     var value = input.val();
     if (value.length && value >= 0) {
-      var cost = this.checkCost(value);
       this.showCalculation();
-      this.updateSubscriptionCalculation(cost);
+      this.recalculateBand();
     } else {
       this.hideCalculation();
     }
@@ -76,7 +75,10 @@ UNISON.StepThree = {
   	console.log('here')
 
   	$('.js-automatic-employer').hide();
+  	$('.js-automatic-employer input').removeAttr('data-required');
+
   	$('.js-manual-employer').show();
+  	$('.js-manual-employer input').attr('data-required', true);
   },
 
   lookupWorkplaces: function(employerId) {
@@ -110,7 +112,7 @@ UNISON.StepThree = {
 			create: false,
 			render: {
 				option: function(item, escape) {
-					return '<div>' + item.name + '(' + item.id + ')</div>';
+					return '<div>' + item.name + '</div>';
 				}
 			},
 			onChange: function(value) {
@@ -135,7 +137,7 @@ UNISON.StepThree = {
 
 	recalculateBand: function(e) {
 		var salary = $('.js-salary').val();
-		var frequency = $('input[name="work-salary-frequency"]').val();
+		var frequency = $('input[name="salary_frequency"]:checked').val();
 		var hoursPerWeek = $('.js-hours-per-week').val();
 
 		var total = 0;
@@ -166,9 +168,11 @@ UNISON.StepThree = {
 
 		if (frequency == 'hourly') {
 			$('.js-hours-per-week-container').show();
+			$('.js-hours-per-week-container input').attr('data-required', true);
 		}
 		else {
 			$('.js-hours-per-week-container').hide();
+			$('.js-hours-per-week-container input').removeAttr('data-required');
 		}
 
 		this.recalculateBand();

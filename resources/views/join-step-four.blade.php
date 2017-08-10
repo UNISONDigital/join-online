@@ -50,7 +50,7 @@
         </fieldset>
         <div class="payment__salary">
           <p class="payment__option-title">Set up payroll deductions</p>
-          <p class="payment__option-paragraph"><strong>Your subscription will be &pound;X.XX per month.</strong></p>
+          <p class="payment__option-paragraph"><strong>Your subscription will be {{ $cost }} per month.</strong></p>
           <p class="payment__option-paragraph">UNISON and your employer have an agreement that allows you to pay your subscription directly through your wages.</p>
           <fieldset class="step__form-fieldset">
             <label for="payment-salary-name">Enter your name below to signify your consent to your subscription being paid in this way:</label>
@@ -59,7 +59,7 @@
         </div>
         <div class="payment__direct-debit">
           <p class="payment__option-title">Set up my Direct Debit</p>
-          <p class="payment__option-paragraph"><strong>Your subscription will be &pound;X.XX per month.</strong></p>
+          <p class="payment__option-paragraph"><strong>Your subscription will be {{ $cost }} per month.</strong></p>
           <fieldset class="step__form-fieldset">
             <label for="payment-dd-name">Account holder</label>
             <input id="payment-dd-name" name="direct_debit_account_name" class="step__form-input" type="text" placeholder="Enter name of account holder" value="{{ $application->direct_debit_account_name }}">
@@ -75,7 +75,7 @@
           </fieldset>
           <fieldset class="step__form-fieldset step__form--title-input">
             <label for="payment-dd-payment-date">Day of month to take payment:</label>
-            <select id="payment-dd-payment-date" name="direct_debit_day_of_month" class="js-selectric" data-required data-select>
+            <select id="payment-dd-payment-date" name="direct_debit_day_of_month" class="js-selectric step__form-input" data-required data-select>
               <option value="null">Please select...</option>
               @for ($i = 1; $i <= 31; $i++)
               	<option value="{{ $i }}"

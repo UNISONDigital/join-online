@@ -7,19 +7,19 @@
           <span>Step 3 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-three" data-module="StandardForm" method="POST" action="/join-step-three/{{ $application->token }}">
+      <form class="step__form standard-form js-step-three js-automatic-employer" data-module="StandardForm" method="POST" action="/join-step-three/{{ $application->token }}">
       	{{ csrf_field() }}
 
         <fieldset class="step__form-fieldset js-automatic-employer">
           <label>Select your employer by entering their name below:</label>
-          <input name="employer_id" class="js-employer" />
+          <input name="employer_id" class="js-employer" data-required />
 
         	<a class="js-cant-find-employer" href="#">Can't find your employer in the list?</a>
 
 	        <fieldset class="step__form-fieldset js-workplaces" style="display: none;">
 	          <label>Matches we've found for your workplace:</label>
 	          <div class="alt-radio js-workplace-template" tabindex="0" style="display: none;">
-	            <input id="work-workplace-1" name="workplace_id" class="step__form-input alt-radio__input" type="radio" value="" checked>
+	            <input id="work-workplace-1" name="workplace_id" class="step__form-input alt-radio__input" type="radio" value="" checked data-required>
 	            <label for="work-workplace-1" class="alt-radio__label">
 	              <div class="alt-radio__radio"><span class="alt-radio__radio-disc"></span></div>
 	              <div class="alt-radio__copy">

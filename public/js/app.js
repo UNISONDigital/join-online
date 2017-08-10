@@ -10501,6 +10501,7 @@ UNISON.StandardForm = function (selector) {
     } else {
       selector = $(el);
     }
+    console.log(selector);
     var errorElement = selector.siblings('.step__form-error-message');
     var errorMessage = errorElement.data('error-message');
     errorElement.html(errorMessage);
@@ -10700,9 +10701,10 @@ UNISON.StepThree = {
     this.SELECTOR = $('.js-step-three');
     this.createListeners();
     this.setupEmployerSelectize();
+    this.onFrequencyChanged();
 
-    console.log($('.js-employer-name'));
-    if ($('.js-employer-name').data('manual-entry') == 'true') {
+    console.log($('.js-employer-name').data('manual-entry'));
+    if ($('.js-employer-name').data('manual-entry')) {
       this.onManuallyEnterEmployer(null);
     }
   },
@@ -10744,9 +10746,8 @@ UNISON.StepThree = {
     var input = $(e.currentTarget);
     var value = input.val();
     if (value.length && value >= 0) {
-      var cost = this.checkCost(value);
       this.showCalculation();
-      this.updateSubscriptionCalculation(cost);
+      this.recalculateBand();
     } else {
       this.hideCalculation();
     }
@@ -10768,7 +10769,10 @@ UNISON.StepThree = {
     console.log('here');
 
     $('.js-automatic-employer').hide();
+    $('.js-automatic-employer input').removeAttr('data-required');
+
     $('.js-manual-employer').show();
+    $('.js-manual-employer input').attr('data-required', true);
   },
 
   lookupWorkplaces: function lookupWorkplaces(employerId) {
@@ -10794,7 +10798,7 @@ UNISON.StepThree = {
     var lookupWorkplaces = this.lookupWorkplaces;
 
     $('.js-employer').selectize({
-      valueField: 'rms_id',
+      valueField: 'id',
       labelField: 'name',
       searchField: 'name',
       maxItems: 1,
@@ -10802,7 +10806,7 @@ UNISON.StepThree = {
       create: false,
       render: {
         option: function option(item, escape) {
-          return '<div>' + item.name + '(' + item.id + ')</div>';
+          return '<div>' + item.name + '</div>';
         }
       },
       onChange: function onChange(value) {
@@ -10827,7 +10831,7 @@ UNISON.StepThree = {
 
   recalculateBand: function recalculateBand(e) {
     var salary = $('.js-salary').val();
-    var frequency = $('input[name="work-salary-frequency"]').val();
+    var frequency = $('input[name="salary_frequency"]:checked').val();
     var hoursPerWeek = $('.js-hours-per-week').val();
 
     var total = 0;
@@ -10851,15 +10855,17 @@ UNISON.StepThree = {
   },
 
   onFrequencyChanged: function onFrequencyChanged(e) {
-    var frequency = $('input[name="work-salary-frequency"]').val();
+    var frequency = $('input[name="salary_frequency"]:checked').val();
 
     if (frequency == 'hourly') {
       $('.js-hours-per-week-container').show();
+      $('.js-hours-per-week-container input').attr('data-required', true);
     } else {
       $('.js-hours-per-week-container').hide();
+      $('.js-hours-per-week-container input').removeAttr('data-required');
     }
 
-    recalculateBand();
+    this.recalculateBand();
   },
 
   // ======================================
@@ -10869,7 +10875,7 @@ UNISON.StepThree = {
     this.SELECTOR.find('.js-salary,.js-hours-per-week').on('keyup', function (e) {
       UNISON.StepThree.recalculateBand();
     });
-    this.SELECTOR.find('js-salary-frequency').on('click', function () {
+    this.SELECTOR.find('.js-salary-frequency').on('click', function () {
       UNISON.StepThree.onFrequencyChanged();
     });
     this.SELECTOR.find('.currency-input__input').on('input', function (e) {

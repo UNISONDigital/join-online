@@ -150,6 +150,7 @@ UNISON.StandardForm = function(selector) {
     } else {
       selector = $(el);
     }
+    console.log(selector);
     var errorElement = selector.siblings('.step__form-error-message');
     var errorMessage = errorElement.data('error-message');
     errorElement.html(errorMessage);
