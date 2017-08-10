@@ -7,7 +7,7 @@
           <span>Step 3 of 5</span>
         </div>
       </div>
-      <form class="step__form standard-form js-step-three js-automatic-employer" data-module="StandardForm" method="POST" action="/join-step-three/{{ $application->token }}">
+      <form class="step__form standard-form js-step-three" data-module="StandardForm" method="POST" action="/join-step-three/{{ $application->token }}">
       	{{ csrf_field() }}
 
         <fieldset class="step__form-fieldset js-automatic-employer">

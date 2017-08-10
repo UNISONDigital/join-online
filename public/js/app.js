@@ -10766,7 +10766,6 @@ UNISON.StepThree = {
     if (e) {
       e.preventDefault();
     }
-    console.log('here');
 
     $('.js-automatic-employer').hide();
     $('.js-automatic-employer input').removeAttr('data-required');
