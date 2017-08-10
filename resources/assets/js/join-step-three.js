@@ -7,9 +7,10 @@ UNISON.StepThree = {
     this.SELECTOR = $('.js-step-three');
     this.createListeners();
     this.setupEmployerSelectize();
+    this.onFrequencyChanged();
 
-    console.log($('.js-employer-name'))
-    if ($('.js-employer-name').data('manual-entry') == 'true') {
+    console.log($('.js-employer-name').data('manual-entry'))
+    if ($('.js-employer-name').data('manual-entry')) {
     	this.onManuallyEnterEmployer(null);
     }
   },
@@ -101,7 +102,7 @@ UNISON.StepThree = {
   	var lookupWorkplaces = this.lookupWorkplaces;
 
 		$('.js-employer').selectize({
-			valueField: 'rms_id',
+			valueField: 'id',
 			labelField: 'name',
 			searchField: 'name',
 			maxItems: 1,
@@ -161,7 +162,7 @@ UNISON.StepThree = {
 	},
 
 	onFrequencyChanged: function(e) {
-		var frequency = $('input[name="work-salary-frequency"]').val();
+		var frequency = $('input[name="salary_frequency"]:checked').val();
 
 		if (frequency == 'hourly') {
 			$('.js-hours-per-week-container').show();
@@ -170,7 +171,7 @@ UNISON.StepThree = {
 			$('.js-hours-per-week-container').hide();
 		}
 
-		recalculateBand();
+		this.recalculateBand();
 	},
 
   // ======================================
@@ -178,7 +179,7 @@ UNISON.StepThree = {
   // ======================================
   createListeners: function() {
   	this.SELECTOR.find('.js-salary,.js-hours-per-week').on('keyup', function(e) { UNISON.StepThree.recalculateBand(); });
-  	this.SELECTOR.find('js-salary-frequency').on('click', function() { UNISON.StepThree.onFrequencyChanged(); });
+  	this.SELECTOR.find('.js-salary-frequency').on('click', function() { UNISON.StepThree.onFrequencyChanged(); });
     this.SELECTOR.find('.currency-input__input').on('input', function(e) { UNISON.StepThree.onCurrencyInput(e); });
     this.SELECTOR.find('.step__form--second-job input').on('change', function(e) { UNISON.StepThree.onSecondaryJobInputChange(e); });
   	this.SELECTOR.find('.js-cant-find-employer').on('click', function(e) { UNISON.StepThree.onManuallyEnterEmployer(e); });

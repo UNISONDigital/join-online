@@ -104,7 +104,7 @@
             </div>
             <div class="alt-radio-tabbed" tabindex="0">
               <input id="work-salary-frequency-4" name="salary_frequency" class="step__form-input alt-radio-tabbed__input js-salary-frequency" type="radio" value="yearly"
-              	@if ($application->salary_frequency == 'yearly')
+              	@if ($application->salary_frequency == 'yearly' || !$application->salary_frequency)
               		checked
               	@endif
               >
@@ -123,7 +123,7 @@
 	          <p class="step__form-footnote">If the amount varies use an average.</p>
 	          <div class="currency-input__wrap">
 	            <div class="currency-input__inner">
-	              <input id="work-hours-per-week" name="hours_per_week" class="step__form-input js-hours-per-week" type="number" placeholder="Hours per week" value="{{ $application->hours_per_week }}" data-required>
+	              <input id="work-hours-per-week" name="hours_per_week" class="step__form-input js-hours-per-week" type="number" placeholder="Hours per week" value="{{ $application->hours_per_week }}" step="0.1"data-required>
 	            </div>
 	          </div>
 	        </div>
